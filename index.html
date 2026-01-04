@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -8,10 +8,9 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/apple-icon.png">
     <meta property="og:title" content="adam zima">
-    <meta property="og:description" content="digitální & printový design">
+    <meta property="og:description" content="digital & print design">
     <meta property="og:image" content="assets/adamzima.jpg"> 
     <meta property="og:url" content="https://www.adamzima.cz">
-    
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,13 +30,13 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* 1. VLASTNÍ VÝBĚR TEXTU (HIGHLIGHT) */
+        /* 1. SELECTION HIGHLIGHT */
         ::selection {
             background-color: var(--accent);
             color: #000;
         }
 
-        /* 2. VLASTNÍ SCROLLBAR (Chrome, Safari, Edge) */
+        /* 2. CUSTOM SCROLLBAR */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -47,7 +46,7 @@
         ::-webkit-scrollbar-thumb {
             background-color: rgba(0, 0, 0, 0.2);
             border-radius: 20px;
-            border: 3px solid transparent; /* Tričko pro odsazení */
+            border: 3px solid transparent;
             background-clip: content-box;
         }
         ::-webkit-scrollbar-thumb:hover {
@@ -67,7 +66,7 @@
             min-height: 100vh;
             padding-bottom: 150px;
             
-            /* 3. FADE IN ANIMACE PŘI NAČTENÍ */
+            /* 3. FADE IN ANIMATION */
             animation: fadeInPage 1s ease-out;
         }
 
@@ -76,7 +75,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- POZADÍ --- */
+        /* --- BACKGROUND --- */
         #soft-glow {
             position: fixed; top: 0; left: 0; width: 900px; height: 900px;
             background: radial-gradient(circle, rgba(207, 255, 0, 0.35) 0%, rgba(255, 255, 255, 0) 70%);
@@ -84,7 +83,7 @@
             filter: blur(140px); transform: translate(-50%, -50%); will-change: transform;
         }
 
-        /* --- NAVIGACE --- */
+        /* --- NAV --- */
         nav {
             position: fixed; top: 0; left: 0; width: 100%; height: 70px; padding: 0 50px;
             display: flex; justify-content: space-between; align-items: center;
@@ -115,7 +114,7 @@
             opacity: 0; animation: fadeUp 1s ease forwards 0.5s;
         }
 
-        /* --- PROJEKTY --- */
+        /* --- PROJECTS --- */
         .projects-container { max-width: var(--max-width); margin: 0 auto; padding: 50px 50px; }
         
         .project-row {
@@ -137,7 +136,7 @@
         h2 { font-size: 2.8rem; font-weight: 600; letter-spacing: -1.5px; margin-bottom: 20px; line-height: 1.1; color: #1d1d1f; }
         p.desc { font-size: 1.05rem; color: #555; line-height: 1.6; margin-bottom: 35px; max-width: 450px; }
 
-        /* Tlačítko */
+        /* Button */
         .liquid-btn {
             display: inline-block; padding: 12px 30px; font-size: 0.9rem; font-weight: 500; color: var(--text-main); text-decoration: none;
             border-radius: 100px; background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(0, 0, 0, 0.08);
@@ -154,7 +153,7 @@
         .landscape .image-container { width: 65%; }
         .portrait .image-container { width: 45%; }
 
-        /* --- ARCHIV --- */
+        /* --- ARCHIVE --- */
         .archive-section { width: 100%; margin: 0 auto; padding: 0 0 100px 0; overflow: hidden; }
         .archive-header {
             max-width: var(--max-width); margin: 0 auto 40px auto; padding: 60px 50px 0 50px;
@@ -182,7 +181,7 @@
         }
         .archive-item:hover img { opacity: 1; }
 
-        /* --- KONTAKT --- */
+        /* --- CONTACT --- */
         .contact-section {
             max-width: var(--max-width); margin: 0 auto; padding: 100px 50px;
             border-top: 1px solid #eee; text-align: center;
@@ -195,7 +194,7 @@
         .contact-link-large:hover { color: #999; }
         .contact-sub { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 0; }
 
-        /* --- PLOVOUCÍ DOK --- */
+        /* --- FLOATING DOCK --- */
         .floating-dock {
             position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
             background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(16px);
@@ -246,25 +245,22 @@
         .about-photo { width: 100%; aspect-ratio: 3/4; background: #ddd; object-fit: cover; border-radius: 12px; }
         
         .text-link {
-            text-decoration: none;      /* Žádné klasické tenké podtržení */
-            color: #000;                /* Černý text */
-            font-weight: 600;           /* Tučnější, aby to bylo vidět */
+            text-decoration: none;
+            color: #000;
+            font-weight: 600;
             
-            /* --- EFEKT FIXU --- */
-            /* Vytvoříme žluté pozadí, které má na výšku jen 35% */
+            /* --- HIGHLIGHT EFFECT --- */
             background-image: linear-gradient(#CFFF00, #CFFF00);
-            background-size: 100% 20%;  /* Šířka 100%, Výška 35% (jen spodek písmen) */
+            background-size: 100% 20%; 
             background-repeat: no-repeat;
-            background-position: 0 90%; /* Umístění dole */
+            background-position: 0 90%;
             
-            /* Plynulá animace vytažení barvy */
             transition: background-size 0.25s ease-in-out;
-            padding: 0 2px; /* Malý odstup, aby barva nezačínala hned na písmenku */
+            padding: 0 2px;
         }
 
-        /* Při najetí myší se barva vytáhne na celou výšku */
         .text-link:hover {
-            background-size: 100% 100%; /* Změníme výšku na 100% */
+            background-size: 100% 100%;
             cursor: pointer;
         }
 
@@ -285,13 +281,12 @@
             .contact-link-large { font-size: 2rem; word-break: break-word; }
             .about-grid { grid-template-columns: 1fr; gap: 30px; }
             .floating-dock { 
-                width: max-content; /* Šířka se stane jen tak velkou, jak je potřeba */
-                max-width: 90%;     /* Pojistka, aby to nelezlo z obrazovky na mini mobilech */
-                
+                width: max-content;
+                max-width: 90%;
                 justify-content: center; 
                 gap: 15px; 
                 bottom: 20px; 
-                padding: 10px 25px; /* Trochu větší padding po stranách pro hezčí tvar */
+                padding: 10px 25px;
                 overflow-x: visible; 
             }
             .dock-item { padding: 6px 5px; font-size: 0.75rem; }
@@ -301,7 +296,7 @@
             .close-modal { top: 20px; right: 20px; }
             .about-text-content .modal-title { font-size: 1.8rem;}
             #soft-glow {
-                width: 400px;  /* Zmenšeno z 900px */
+                width: 400px;
                 height: 400px; 
                 filter: blur(90px); 
             }
@@ -336,14 +331,14 @@
     <nav>
         <div class="logo" onclick="window.scrollTo(0,0);">adam zima</div>
         <div class="nav-links">
-            <a onclick="openAbout()">o mně</a>
-            <a href="#contact">napište mi</a>
+            <a onclick="openAbout()">about</a>
+            <a href="#contact">contact</a>
         </div>
     </nav>
 
     <header>
         <h1>digital & print design</h1>
-        <p class="hero-desc">tvořím čisté vizuální identity a funkční grafiku</p>
+        <p class="hero-desc">creating clean visual identities and functional graphics</p>
     </header>
 
     <div class="projects-container" id="work">
@@ -355,8 +350,8 @@
             <div class="project-text">
                 <span class="text-label">webdesign / digital</span>
                 <h2>U LUDVÍČKA</h2>
-                <p class="desc">webdesign a digital design pro Apartmán U Ludvíčka.</p>
-                <button class="liquid-btn" onclick="openProject(0)">detail projektu</button>
+                <p class="desc">webdesign and digital design for Apartment U Ludvíčka.</p>
+                <button class="liquid-btn" onclick="openProject(0)">view project</button>
             </div>
         </div>
 
@@ -367,8 +362,8 @@
             <div class="project-text">
                 <span class="text-label">webdesign / digital</span>
                 <h2>DOMIX</h2>
-                <p class="desc">webdesign a digital design pro obchod s bytovými doplňky.</p>
-                <button class="liquid-btn" onclick="openProject(1)">detail projektu</button>
+                <p class="desc">webdesign and digital design for a home accessories store.</p>
+                <button class="liquid-btn" onclick="openProject(1)">view project</button>
             </div>
         </div>
 
@@ -379,8 +374,8 @@
             <div class="project-text">
                 <span class="text-label">ui / digital</span>
                 <h2>PIT STOP F1</h2>
-                <p class="desc">strategický simulátor formule 1. design uživatelského rozhraní a herních mechanik.</p>
-                <button class="liquid-btn" onclick="openProject(2)">detail projektu</button>
+                <p class="desc">formula 1 strategy simulator. user interface design and game mechanics.</p>
+                <button class="liquid-btn" onclick="openProject(2)">view project</button>
             </div>
         </div>
         
@@ -390,9 +385,9 @@
             </div>
             <div class="project-text">
                 <span class="text-label">event identity / print</span>
-                <h2>maturitní ples</h2>
-                <p class="desc">vizuální identita maturitního plesu. výrazná typografie a zlaté akcenty.</p>
-                <button class="liquid-btn" onclick="openProject(3)">detail projektu</button>
+                <h2>graduation ball</h2>
+                <p class="desc">visual identity for a graduation ball. bold typography and golden accents.</p>
+                <button class="liquid-btn" onclick="openProject(3)">view project</button>
             </div>
         </div>
 
@@ -402,9 +397,9 @@
             </div>
             <div class="project-text">
                 <span class="text-label">layout / print</span>
-                <h2>informační tabule</h2>
-                <p class="desc">grafický návrh informační tabule pro židovský hřbitov.</p>
-                <button class="liquid-btn" onclick="openProject(4)">detail projektu</button>
+                <h2>information board</h2>
+                <p class="desc">graphic design of an information board for a jewish cemetery.</p>
+                <button class="liquid-btn" onclick="openProject(4)">view project</button>
             </div>
         </div>
 
@@ -415,8 +410,8 @@
             <div class="project-text">
                 <span class="text-label">editorial / print</span>
                 <h2>GYMSOS NEWS</h2>
-                <p class="desc">školní časopis gymnázia. sazba, typografie a redakční design.</p>
-                <button class="liquid-btn" onclick="openProject(5)">detail projektu</button>
+                <p class="desc">high school magazine. typesetting, typography and editorial design.</p>
+                <button class="liquid-btn" onclick="openProject(5)">view project</button>
             </div>
         </div>
 
@@ -426,9 +421,9 @@
             </div>
             <div class="project-text">
                 <span class="text-label">layout & edit / print</span>
-                <h2>maturitní tablo</h2>
-                <p class="desc">kreativní pojetí tabla ve stylu módního magazínu. studiová fotografie.</p>
-                <button class="liquid-btn" onclick="openProject(6)">detail projektu</button>
+                <h2>class tableau</h2>
+                <p class="desc">creative tableau concept in the style of a fashion magazine. studio photography.</p>
+                <button class="liquid-btn" onclick="openProject(6)">view project</button>
             </div>
         </div>
 
@@ -438,9 +433,9 @@
             </div>
             <div class="project-text">
                 <span class="text-label">layout and edit / print</span>
-                <h2>maturitní tablo</h2>
-                <p class="desc">maturitní tablo inspirované modním magazínem.</p>
-                <button class="liquid-btn" onclick="openProject(7)">detail projektu</button>
+                <h2>class tableau</h2>
+                <p class="desc">graduation tableau inspired by a fashion magazine.</p>
+                <button class="liquid-btn" onclick="openProject(7)">view project</button>
             </div>
         </div>
 
@@ -450,9 +445,9 @@
             </div>
             <div class="project-text">
                 <span class="text-label">layout and edit / print</span>
-                <h2>maturitní tablo</h2>
-                <p class="desc">maturitní tablo inspirované streamovací platformou.</p>
-                <button class="liquid-btn" onclick="openProject(8)">detail projektu</button>
+                <h2>class tableau</h2>
+                <p class="desc">graduation tableau inspired by a streaming platform.</p>
+                <button class="liquid-btn" onclick="openProject(8)">view project</button>
             </div>
         </div>
 
@@ -460,8 +455,8 @@
 
     <section class="archive-section reveal">
         <div class="archive-header">
-            <h3>archiv</h3>
-            <p>výběr dalších prací</p>
+            <h3>archive</h3>
+            <p>selection of other works</p>
         </div>
         <div class="archive-slider" id="slider">
             <div class="archive-item" onclick="openArchive(this)"><img src="assets/archiv/plakat_divadlo.webp" alt="poster" loading="lazy"></div>
@@ -472,8 +467,8 @@
     </section>
 
     <section id="contact" class="contact-section">
-        <p class="contact-sub">máte nápad na projekt?</p>
-        <a href="mailto:adam@adamzima.com" class="contact-link-large">napište mi.</a>
+        <p class="contact-sub">have a project in mind?</p>
+        <a href="mailto:adam@adamzima.com" class="contact-link-large">get in touch.</a>
     </section>
 
     <footer></footer>
@@ -487,65 +482,65 @@
     </div>
 
     <div id="modal-overlay" class="modal-overlay">
-        <button class="close-modal" onclick="closeModal()">zavřít</button>
+        <button class="close-modal" onclick="closeModal()">close</button>
         <div class="modal-container" id="modal-content"></div>
     </div>
 
     <script>
-        /* DATA PROJEKTŮ */
+        /* PROJECTS DATA */
         const projects = [
             {
                 title: "U LUDVÍČKA",
                 label: "webdesign / digital",
-                desc: "web na <a href='https://www.uludvicka.cz' target='_blank' class='text-link'>uludvicka.cz</a>",
+                desc: "web at <a href='https://www.uludvicka.cz' target='_blank' class='text-link'>uludvicka.cz</a>",
                 gallery: ["assets/uludvicka/uludvicka1.webp"]
             },
             {
                 title: "DOMIX",
                 label: "webdesign / digital",
-                desc: "web na <a href='https://www.domix.cz' target='_blank' class='text-link'>domix.cz</a>",
+                desc: "web at <a href='https://www.domix.cz' target='_blank' class='text-link'>domix.cz</a>",
                 gallery: ["assets/domix/domix1.webp"]
             },
             {
                 title: "PIT STOP",
                 label: "ui / digital",
-                desc: "návrh uživatelského rozhraní pro strategický simulátor závodů f1. cílem bylo vytvořit přehledný, ale vizuálně atraktivní dashboard, který hráči umožňuje rychle reagovat na změny v závodě. design systém zahrnuje tmavý režim s neonovou žlutou pro maximální kontrast, ikonografii pro různé typy pneumatik a počasí, a rozhraní pro výběr týmu a okruhu.",
+                desc: "user interface design for an f1 strategy racing simulator. the goal was to create a clear yet visually appealing dashboard that allows players to react quickly to race changes. the design system features a dark mode with neon yellow for maximum contrast, iconography for various tire types and weather, and an interface for team and circuit selection.",
                 gallery: ["assets/pitstop/pitstop.webp", "assets/pitstop/pitstop1.webp", "assets/pitstop/pitstop2.webp", "assets/pitstop/pitstop3.webp", "assets/pitstop/pitstop4.webp", "assets/pitstop/pitstop5.webp"]
             },
             {
-                title: "gymnazijní ples",
+                title: "graduation ball",
                 label: "event identity / print & digital",
-                desc: "kompletní vizuální styl pro maturitní ples. od hlavního plakátu, přes program až po grafiku na sociální sítě.",
+                desc: "complete visual style for the graduation ball. from the main poster and program to social media graphics.",
                 gallery: ["assets/maturitni_ples/maturitni_ples.webp", "assets/maturitni_ples/maturitni_ples1.webp", "assets/maturitni_ples/maturitni_ples2.webp", "assets/maturitni_ples/maturitni_ples3.webp", "assets/maturitni_ples/maturitni_ples4.webp", "assets/maturitni_ples/maturitni_ples5.webp", "assets/maturitni_ples/maturitni_ples6.webp"]
             },
             {
-                title: "informační tabule",
+                title: "information board",
                 label: "layout / print",
-                desc: "návrh informačního tabule. cílem bylo vytvořit důstojnou a informativní grafiku, která zapadne do historického kontextu.",
+                desc: "design of an information board. the goal was to create dignified and informative graphics that fit into the historical context.",
                 gallery: ["assets/informacni_tabule/informacni_tabule.webp", "assets/informacni_tabule/informacni_tabule1.webp", "assets/informacni_tabule/informacni_tabule2.webp"]
             },
             {
                 title: "GYMSOS NEWS",
                 label: "editorial / print & digital",
-                desc: "sazba školního časopisu. práce s mřížkou, typografií a hierarchií textu pro atraktivní čtenářský zážitek.",
+                desc: "school magazine layout. working with grid, typography, and text hierarchy for an attractive reading experience.",
                 gallery: ["assets/gymsos_news/gymsos_news.webp", "assets/gymsos_news/gymsos_news1.webp", "assets/gymsos_news/gymsos_news2.webp", "assets/gymsos_news/gymsos_news3.webp", "assets/gymsos_news/gymsos_news4.webp", "assets/gymsos_news/gymsos_news5.webp"]
             },
              {
-                title: "maturitní tablo",
+                title: "class tableau",
                 label: "layout / print",
-                desc: "virální koncept tabla. převedení digitálního rozhraní do tiskové podoby velkého formátu.",
+                desc: "viral tableau concept. converting a digital interface into a large format print form.",
                 gallery: ["assets/tablo_figurky/tablo_figurky.webp"]
             },
             {
-                title: "maturitní tablo",
+                title: "class tableau",
                 label: "layout / print",
-                desc: "netradiční tablo. koncept a finální postprodukce ve stylu módního magazínu.",
+                desc: "unconventional tableau. concept and final post-production in the style of a fashion magazine.",
                 gallery: ["assets/tablo_vogue/tablo_vogue.webp"]
             },
             {
-                title: "maturitní tablo",
+                title: "class tableau",
                 label: "layout / print",
-                desc: "převedení digitálního rozhraní do tiskové podoby velkého formátu.",
+                desc: "converting a digital interface into a large format print form.",
                 gallery: ["assets/tablo_netflix/tablo_netflix.webp"]
             }
         ];
@@ -556,13 +551,13 @@
                     <img src="assets/adam.jpg" alt="adam zima" class="about-photo">
                 </div>
                 <div class="about-text-content">
-                    <h1 class="modal-title">jsem adam.</h1>
+                    <h1 class="modal-title">i am adam.</h1>
                     <p class="modal-desc">
-                        jsem grafický designér se zaměřením na vizuální identity a tiskoviny. baví mě hledat jednoduchá vizuální řešení složitých zadání.
+                        i am a graphic designer focusing on visual identities and print media. i enjoy finding simple visual solutions to complex problems.
                         <br><br>
-                        věřím, že design není jen o tom, jak věci vypadají, ale především jak fungují.
+                        i believe design is not just about how things look, but primarily how they work.
                     <div class="contact-item">
-                        <h4 style="margin-bottom:5px; color:#999; font-size:0.8rem; letter-spacing:1px;">kontakt</h4>
+                        <h4 style="margin-bottom:5px; color:#999; font-size:0.8rem; letter-spacing:1px;">contact</h4>
                         <a href="mailto:adam@adamzima.com" style="font-size: 1.1rem; color: #111; text-decoration: none;">adam@adamzima.com</a>
                     </div>
                 </div>
@@ -596,7 +591,7 @@
             if (wasDragged) return;
             const img = element.querySelector('img');
             modalContent.innerHTML = `
-                <span class="modal-meta">archiv</span>
+                <span class="modal-meta">archive</span>
                 <h1 class="modal-title">${img.alt}</h1>
                 <div class="modal-gallery"><img src="${img.src}" alt="${img.alt}"></div>
             `;
@@ -635,7 +630,7 @@
             slider.scrollLeft = scrollLeft - walk;
         });
 
-        /* ANIMACE */
+        /* ANIMATION */
         const glow = document.getElementById('soft-glow');
         let mouseX = window.innerWidth/2, mouseY = window.innerHeight/2;
         let glowX = window.innerWidth/2, glowY = window.innerHeight/2;
@@ -662,7 +657,7 @@
             const preloader = document.getElementById('preloader');
             setTimeout(() => {
             preloader.classList.add('hidden');
-            }, 500); // Malé zpoždění pro efekt
+            }, 500); 
         });
     </script>
 
