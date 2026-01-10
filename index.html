@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <title>adam zima</title>
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link rel="apple-touch-icon" href="assets/apple-icon.png">
+    <link rel="icon" type="image/png" href="/assets/favicon.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/assets/favicon.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="/assets/apple-icon.png">
     <meta property="og:title" content="adam zima">
     <meta property="og:description" content="digital & print design">
-    <meta property="og:image" content="assets/adamzima.jpg"> 
+    <meta property="og:image" content="/assets/adamzima.jpg"> 
     <meta property="og:url" content="https://www.adamzima.cz">
+    
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +38,7 @@
             color: #000;
         }
 
-        /* 2. CUSTOM SCROLLBAR */
+        /* 2. CUSTOM SCROLLBAR (Chrome, Safari, Edge) */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -46,7 +48,7 @@
         ::-webkit-scrollbar-thumb {
             background-color: rgba(0, 0, 0, 0.2);
             border-radius: 20px;
-            border: 3px solid transparent;
+            border: 3px solid transparent; 
             background-clip: content-box;
         }
         ::-webkit-scrollbar-thumb:hover {
@@ -65,14 +67,16 @@
             position: relative;
             min-height: 100vh;
             padding-bottom: 150px;
-            
-            /* 3. FADE IN ANIMATION */
-            animation: fadeInPage 1s ease-out;
         }
 
         @keyframes fadeInPage {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Animate header and projects */
+        header, .projects-container, .archive-section, .contact-section {
+            animation: fadeInPage 1s ease-out;
         }
 
         /* --- BACKGROUND --- */
@@ -83,7 +87,7 @@
             filter: blur(140px); transform: translate(-50%, -50%); will-change: transform;
         }
 
-        /* --- NAV --- */
+        /* --- NAVIGATION --- */
         nav {
             position: fixed; top: 0; left: 0; width: 100%; height: 70px; padding: 0 50px;
             display: flex; justify-content: space-between; align-items: center;
@@ -136,7 +140,7 @@
         h2 { font-size: 2.8rem; font-weight: 600; letter-spacing: -1.5px; margin-bottom: 20px; line-height: 1.1; color: #1d1d1f; }
         p.desc { font-size: 1.05rem; color: #555; line-height: 1.6; margin-bottom: 35px; max-width: 450px; }
 
-        /* Button */
+        /* BUTTON */
         .liquid-btn {
             display: inline-block; padding: 12px 30px; font-size: 0.9rem; font-weight: 500; color: var(--text-main); text-decoration: none;
             border-radius: 100px; background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(0, 0, 0, 0.08);
@@ -149,6 +153,8 @@
             background: var(--accent); opacity: 0; z-index: -1; transition: opacity 0.4s ease; filter: blur(15px);
         }
         .liquid-btn:hover::before { opacity: 0.4; }
+        
+        .liquid-btn:disabled { opacity: 0.7; cursor: wait; }
 
         .landscape .image-container { width: 65%; }
         .portrait .image-container { width: 45%; }
@@ -181,7 +187,7 @@
         }
         .archive-item:hover img { opacity: 1; }
 
-        /* --- CONTACT --- */
+        /* --- CONTACT SECTION (text only) --- */
         .contact-section {
             max-width: var(--max-width); margin: 0 auto; padding: 100px 50px;
             border-top: 1px solid #eee; text-align: center;
@@ -189,7 +195,7 @@
         .contact-link-large {
             font-size: 3.5rem; font-weight: 600; letter-spacing: -1.5px;
             color: var(--text-main); text-decoration: none;
-            transition: color 0.3s; display: inline-block; margin-top: 10px;
+            transition: color 0.3s; display: inline-block; margin-top: 10px; cursor: pointer;
         }
         .contact-link-large:hover { color: #999; }
         .contact-sub { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 0; }
@@ -210,7 +216,7 @@
 
         footer { height: 50px; }
 
-        /* --- MODAL --- */
+        /* --- MODAL (GENERAL) --- */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
@@ -245,23 +251,39 @@
         .about-photo { width: 100%; aspect-ratio: 3/4; background: #ddd; object-fit: cover; border-radius: 12px; }
         
         .text-link {
-            text-decoration: none;
-            color: #000;
-            font-weight: 600;
-            
-            /* --- HIGHLIGHT EFFECT --- */
+            text-decoration: none; color: #000; font-weight: 600;
             background-image: linear-gradient(#CFFF00, #CFFF00);
-            background-size: 100% 20%; 
-            background-repeat: no-repeat;
-            background-position: 0 90%;
-            
-            transition: background-size 0.25s ease-in-out;
-            padding: 0 2px;
+            background-size: 100% 20%; background-repeat: no-repeat; background-position: 0 90%;
+            transition: background-size 0.25s ease-in-out; padding: 0 2px;
         }
+        .text-link:hover { background-size: 100% 100%; cursor: pointer; }
 
-        .text-link:hover {
-            background-size: 100% 100%;
-            cursor: pointer;
+        /* --- CONTACT FORM STYLES --- */
+        .contact-form {
+            max-width: 500px; margin: 0; text-align: left; display: flex; flex-direction: column; gap: 20px;
+        }
+        .form-group { width: 100%; }
+        .form-input {
+            width: 100%; padding: 15px 20px; background: #fff; border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 12px; font-family: "Inter", sans-serif; font-size: 1rem; color: var(--text-main);
+            transition: all 0.3s ease; outline: none; resize: none;
+        }
+        .form-input:focus { border-color: #000; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .form-input::placeholder { color: #aaa; font-weight: 400; }
+
+        /* --- SERVICES STYLES --- */
+        .services-list {
+            margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        .services-list h4 {
+            font-size: 0.8rem; color: #999; letter-spacing: 1.5px; font-weight: 600; margin-bottom: 20px; text-transform: lowercase;
+        }
+        .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .service-item {
+            font-size: 1rem; font-weight: 500; color: #111; display: flex; align-items: center; gap: 10px;
+        }
+        .service-item::before {
+            content: ''; display: block; width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
         }
 
         /* MEDIA QUERIES */
@@ -281,41 +303,27 @@
             .contact-link-large { font-size: 2rem; word-break: break-word; }
             .about-grid { grid-template-columns: 1fr; gap: 30px; }
             .floating-dock { 
-                width: max-content;
-                max-width: 90%;
-                justify-content: center; 
-                gap: 15px; 
-                bottom: 20px; 
-                padding: 10px 25px;
-                overflow-x: visible; 
+                width: max-content; max-width: 90%; justify-content: center; gap: 15px; bottom: 20px; padding: 10px 25px; overflow-x: visible; 
             }
             .dock-item { padding: 6px 5px; font-size: 0.75rem; }
-            .dock-copy { display: none; } 
-            .dock-divider { display: none; }
-            .dock-divider { display: none; }
+            .dock-copy, .dock-divider { display: none; }
             .close-modal { top: 20px; right: 20px; }
             .about-text-content .modal-title { font-size: 1.8rem;}
-            #soft-glow {
-                width: 400px;
-                height: 400px; 
-                filter: blur(90px); 
-            }
+            #soft-glow { width: 400px; height: 400px; filter: blur(90px); }
+            .services-grid { grid-template-columns: 1fr; }
         }
 
         #preloader {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        background: #fbfbfd; z-index: 9999;
-        display: flex; justify-content: center; align-items: center;
-        transition: opacity 0.6s ease, visibility 0.6s ease;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #fbfbfd; z-index: 9999;
+            display: flex; justify-content: center; align-items: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
         }
         .loader-text {
-        font-weight: 600; font-size: 1.2rem; letter-spacing: -0.5px;
-        animation: pulse 1.5s infinite ease-in-out;
+            font-weight: 600; font-size: 1.2rem; letter-spacing: -0.5px;
+            animation: pulse 1.5s infinite ease-in-out;
         }
-        @keyframes pulse { 
-        0%, 100% { opacity: 0.5; } 
-        50% { opacity: 1; } 
-        }
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
         #preloader.hidden { opacity: 0; visibility: hidden; }
 
         @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
@@ -332,13 +340,13 @@
         <div class="logo" onclick="window.scrollTo(0,0);">adam zima</div>
         <div class="nav-links">
             <a onclick="openAbout()">about</a>
-            <a href="#contact">contact</a>
+            <a onclick="openContact()">get in touch</a>
         </div>
     </nav>
 
     <header>
         <h1>digital & print design</h1>
-        <p class="hero-desc">creating clean visual identities and functional graphics</p>
+        <p class="hero-desc">i create clean visual identities and functional graphics</p>
     </header>
 
     <div class="projects-container" id="work">
@@ -350,7 +358,7 @@
             <div class="project-text">
                 <span class="text-label">webdesign / digital</span>
                 <h2>U LUDVÍČKA</h2>
-                <p class="desc">webdesign and digital design for Apartment U Ludvíčka.</p>
+                <p class="desc">web design and digital design for Apartment U Ludvíčka.</p>
                 <button class="liquid-btn" onclick="openProject(0)">view project</button>
             </div>
         </div>
@@ -362,7 +370,7 @@
             <div class="project-text">
                 <span class="text-label">webdesign / digital</span>
                 <h2>DOMIX</h2>
-                <p class="desc">webdesign and digital design for a home accessories store.</p>
+                <p class="desc">web design and digital design for a home accessories store.</p>
                 <button class="liquid-btn" onclick="openProject(1)">view project</button>
             </div>
         </div>
@@ -374,26 +382,26 @@
             <div class="project-text">
                 <span class="text-label">ui / digital</span>
                 <h2>PIT STOP F1</h2>
-                <p class="desc">formula 1 strategy simulator. user interface design and game mechanics.</p>
+                <p class="desc">strategic formula 1 simulator. design of user interface and game mechanics.</p>
                 <button class="liquid-btn" onclick="openProject(2)">view project</button>
             </div>
         </div>
         
         <div class="project-row portrait reveal">
             <div class="image-container" onclick="openProject(3)">
-                <img src="assets/maturitni_ples/maturitni_ples.webp" alt="maturitní ples" class="project-img" loading="lazy">
+                <img src="assets/maturitni_ples/maturitni_ples.webp" alt="prom" class="project-img" loading="lazy">
             </div>
             <div class="project-text">
                 <span class="text-label">event identity / print</span>
-                <h2>graduation ball</h2>
-                <p class="desc">visual identity for a graduation ball. bold typography and golden accents.</p>
+                <h2>prom</h2>
+                <p class="desc">visual identity for a high school prom. bold typography and gold accents.</p>
                 <button class="liquid-btn" onclick="openProject(3)">view project</button>
             </div>
         </div>
 
         <div class="project-row landscape reveal">
             <div class="image-container" onclick="openProject(4)">
-                <img src="assets/informacni_tabule/informacni_tabule.webp" alt="informační tabule" class="project-img" loading="lazy">
+                <img src="assets/informacni_tabule/informacni_tabule.webp" alt="information board" class="project-img" loading="lazy">
             </div>
             <div class="project-text">
                 <span class="text-label">layout / print</span>
@@ -410,43 +418,43 @@
             <div class="project-text">
                 <span class="text-label">editorial / print</span>
                 <h2>GYMSOS NEWS</h2>
-                <p class="desc">high school magazine. typesetting, typography and editorial design.</p>
+                <p class="desc">high school student magazine. typesetting, typography and editorial design.</p>
                 <button class="liquid-btn" onclick="openProject(5)">view project</button>
             </div>
         </div>
 
         <div class="project-row portrait reveal">
             <div class="image-container" onclick="openProject(6)">
-                <img src="assets/tablo_figurky/tablo_figurky.webp" alt="maturitní tablo figurky" class="project-img" loading="lazy">
+                <img src="assets/tablo_figurky/tablo_figurky.webp" alt="graduation layout figurines" class="project-img" loading="lazy">
             </div>
             <div class="project-text">
                 <span class="text-label">layout & edit / print</span>
-                <h2>class tableau</h2>
-                <p class="desc">creative tableau concept in the style of a fashion magazine. studio photography.</p>
+                <h2>graduation layout</h2>
+                <p class="desc">creative graduation class composite in fashion magazine style. studio photography.</p>
                 <button class="liquid-btn" onclick="openProject(6)">view project</button>
             </div>
         </div>
 
         <div class="project-row landscape reveal">
             <div class="image-container" onclick="openProject(7)">
-                <img src="assets/tablo_vogue/tablo_vogue.webp" alt="maturitní tablo vogue" class="project-img" loading="lazy">
+                <img src="assets/tablo_vogue/tablo_vogue.webp" alt="graduation layout vogue" class="project-img" loading="lazy">
             </div>
             <div class="project-text">
                 <span class="text-label">layout and edit / print</span>
-                <h2>class tableau</h2>
-                <p class="desc">graduation tableau inspired by a fashion magazine.</p>
+                <h2>graduation layout</h2>
+                <p class="desc">graduation class composite inspired by a fashion magazine.</p>
                 <button class="liquid-btn" onclick="openProject(7)">view project</button>
             </div>
         </div>
 
         <div class="project-row portrait reveal">
             <div class="image-container" onclick="openProject(8)">
-                <img src="assets/tablo_netflix/tablo_netflix.webp" alt="netflix tablo" class="project-img" loading="lazy">
+                <img src="assets/tablo_netflix/tablo_netflix.webp" alt="netflix layout" class="project-img" loading="lazy">
             </div>
             <div class="project-text">
                 <span class="text-label">layout and edit / print</span>
-                <h2>class tableau</h2>
-                <p class="desc">graduation tableau inspired by a streaming platform.</p>
+                <h2>graduation layout</h2>
+                <p class="desc">graduation class composite inspired by a streaming platform.</p>
                 <button class="liquid-btn" onclick="openProject(8)">view project</button>
             </div>
         </div>
@@ -460,7 +468,7 @@
         </div>
         <div class="archive-slider" id="slider">
             <div class="archive-item" onclick="openArchive(this)"><img src="assets/archiv/plakat_divadlo.webp" alt="poster" loading="lazy"></div>
-            <div class="archive-item" onclick="openArchive(this)"><img src="assets/archiv/diplom.webp" alt="diplom" loading="lazy"></div>
+            <div class="archive-item" onclick="openArchive(this)"><img src="assets/archiv/diplom.webp" alt="diploma" loading="lazy"></div>
             <div class="archive-item" onclick="openArchive(this)"><img src="assets/archiv/majales.webp" alt="poster" loading="lazy"></div>
             <div class="archive-item" onclick="openArchive(this)"><img src="assets/archiv/studentske_volby.webp" alt="poster" loading="lazy"></div>
         </div>
@@ -468,7 +476,7 @@
 
     <section id="contact" class="contact-section">
         <p class="contact-sub">have a project in mind?</p>
-        <a href="mailto:adam@adamzima.com" class="contact-link-large">get in touch.</a>
+        <a onclick="openContact()" class="contact-link-large">get in touch.</a>
     </section>
 
     <footer></footer>
@@ -476,7 +484,7 @@
     <div class="floating-dock">
         <span class="dock-copy">© 2025 adam zima</span>
         <div class="dock-divider"></div>
-        <a href="https://www.instagram.com/adam_zima?igsh=d3Z0ZjNsdXZ3aGJw&utm_source=qr" class="dock-item">instagram</a>
+        <a href="https://github.com/amizmada" class="dock-item">github</a>
         <a href="https://www.linkedin.com/in/adam-zima-b99a3a207/" class="dock-item">linkedin</a>
         <a href="mailto:adam@adamzima.com" class="dock-item">email</a>
     </div>
@@ -486,65 +494,90 @@
         <div class="modal-container" id="modal-content"></div>
     </div>
 
+    <div id="contact-modal-overlay" class="modal-overlay">
+        <button class="close-modal" onclick="closeContact()">close</button>
+        <div class="modal-container">
+            <span class="modal-meta">contact</span>
+            <h1 class="modal-title">get in touch.</h1>
+            <p class="modal-desc">have a project in mind or just want to ask a question?</p>
+            
+            <form id="popup-contact-form" action="https://formspree.io/f/xeeejrlr" method="POST" class="contact-form">
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="your email" required class="form-input">
+                </div>
+                <div class="form-group">
+                    <textarea name="message" placeholder="how can i help you?" rows="8" required class="form-input"></textarea>
+                </div>
+                <button type="submit" class="liquid-btn" id="popup-submit-btn">send message</button>
+            </form>
+
+            <div id="popup-form-status" style="display: none; text-align: left; margin-top: 20px; color: var(--text-main);">
+                <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Thanks for the message!</h3>
+                <p style="color: var(--text-muted);">I'll get back to you as soon as possible.</p>
+            </div>
+        </div>
+    </div>
+
     <script>
         /* PROJECTS DATA */
         const projects = [
             {
                 title: "U LUDVÍČKA",
                 label: "webdesign / digital",
-                desc: "web at <a href='https://www.uludvicka.cz' target='_blank' class='text-link'>uludvicka.cz</a>",
+                desc: "web design & digital design for Apartment U Ludvíčka. live at <a href='https://www.uludvicka.cz' target='_blank' class='text-link'>uludvicka.cz</a>",
                 gallery: ["assets/uludvicka/uludvicka1.webp"]
             },
             {
                 title: "DOMIX",
                 label: "webdesign / digital",
-                desc: "web at <a href='https://www.domix.cz' target='_blank' class='text-link'>domix.cz</a>",
+                desc: "web design & digital design for a home accessories store. live at <a href='https://www.domix.cz' target='_blank' class='text-link'>domix.cz</a>",
                 gallery: ["assets/domix/domix1.webp"]
             },
             {
                 title: "PIT STOP",
                 label: "ui / digital",
-                desc: "user interface design for an f1 strategy racing simulator. the goal was to create a clear yet visually appealing dashboard that allows players to react quickly to race changes. the design system features a dark mode with neon yellow for maximum contrast, iconography for various tire types and weather, and an interface for team and circuit selection.",
+                desc: "user interface design for a strategic formula 1 racing simulator. the goal was to create a clear but visually attractive dashboard that allows players to react quickly to changes in the race. the design system includes dark mode with neon yellow for maximum contrast, iconography for different tyre types and weather conditions, and interfaces for team and circuit selection.",
                 gallery: ["assets/pitstop/pitstop.webp", "assets/pitstop/pitstop1.webp", "assets/pitstop/pitstop2.webp", "assets/pitstop/pitstop3.webp", "assets/pitstop/pitstop4.webp", "assets/pitstop/pitstop5.webp"]
             },
             {
-                title: "graduation ball",
+                title: "prom",
                 label: "event identity / print & digital",
-                desc: "complete visual style for the graduation ball. from the main poster and program to social media graphics.",
+                desc: "complete visual style for a high school graduation ball. from the main poster and programme to social media graphics.",
                 gallery: ["assets/maturitni_ples/maturitni_ples.webp", "assets/maturitni_ples/maturitni_ples1.webp", "assets/maturitni_ples/maturitni_ples2.webp", "assets/maturitni_ples/maturitni_ples3.webp", "assets/maturitni_ples/maturitni_ples4.webp", "assets/maturitni_ples/maturitni_ples5.webp", "assets/maturitni_ples/maturitni_ples6.webp"]
             },
             {
                 title: "information board",
                 label: "layout / print",
-                desc: "design of an information board. the goal was to create dignified and informative graphics that fit into the historical context.",
+                desc: "design of an information board. the aim was to create dignified and informative graphics that fit into the historical context.",
                 gallery: ["assets/informacni_tabule/informacni_tabule.webp", "assets/informacni_tabule/informacni_tabule1.webp", "assets/informacni_tabule/informacni_tabule2.webp"]
             },
             {
                 title: "GYMSOS NEWS",
                 label: "editorial / print & digital",
-                desc: "school magazine layout. working with grid, typography, and text hierarchy for an attractive reading experience.",
+                desc: "school magazine layout. working with grids, typography and text hierarchy for an engaging reading experience.",
                 gallery: ["assets/gymsos_news/gymsos_news.webp", "assets/gymsos_news/gymsos_news1.webp", "assets/gymsos_news/gymsos_news2.webp", "assets/gymsos_news/gymsos_news3.webp", "assets/gymsos_news/gymsos_news4.webp", "assets/gymsos_news/gymsos_news5.webp"]
             },
              {
-                title: "class tableau",
+                title: "graduation layout",
                 label: "layout / print",
-                desc: "viral tableau concept. converting a digital interface into a large format print form.",
+                desc: "viral class composite concept. converting a digital interface into a large format print form.",
                 gallery: ["assets/tablo_figurky/tablo_figurky.webp"]
             },
             {
-                title: "class tableau",
+                title: "graduation layout",
                 label: "layout / print",
-                desc: "unconventional tableau. concept and final post-production in the style of a fashion magazine.",
+                desc: "unconventional class composite. concept and final post-production in the style of a fashion magazine.",
                 gallery: ["assets/tablo_vogue/tablo_vogue.webp"]
             },
             {
-                title: "class tableau",
+                title: "graduation layout",
                 label: "layout / print",
                 desc: "converting a digital interface into a large format print form.",
                 gallery: ["assets/tablo_netflix/tablo_netflix.webp"]
             }
         ];
 
+        /* ABOUT CONTENT + SERVICES */
         const aboutContent = `
             <div class="about-grid">
                 <div class="about-img-wrapper">
@@ -553,10 +586,22 @@
                 <div class="about-text-content">
                     <h1 class="modal-title">i am adam.</h1>
                     <p class="modal-desc">
-                        i am a graphic designer focusing on visual identities and print media. i enjoy finding simple visual solutions to complex problems.
+                        i am a graphic designer focusing on visual identities and print media. i enjoy finding simple visual solutions to complex tasks.
                         <br><br>
-                        i believe design is not just about how things look, but primarily how they work.
-                    <div class="contact-item">
+                        i believe that design isn't just about how things look, but primarily how they work.
+                    </p>
+                    
+                    <div class="services-list">
+                        <h4>what i do</h4>
+                        <div class="services-grid">
+                            <span class="service-item">visual identities</span>
+                            <span class="service-item">web design</span>
+                            <span class="service-item">posters, print media</span>
+                            <span class="service-item">photo editing</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-item" style="margin-top: 40px;">
                         <h4 style="margin-bottom:5px; color:#999; font-size:0.8rem; letter-spacing:1px;">contact</h4>
                         <a href="mailto:adam@adamzima.com" style="font-size: 1.1rem; color: #111; text-decoration: none;">adam@adamzima.com</a>
                     </div>
@@ -564,6 +609,7 @@
             </div>
         `;
 
+        /* MODAL LOGIC (PROJECTS & ABOUT) */
         const modal = document.getElementById('modal-overlay');
         const modalContent = document.getElementById('modal-content');
 
@@ -607,6 +653,65 @@
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeModal();
         });
+
+        /* CONTACT MODAL LOGIC */
+        const contactModal = document.getElementById('contact-modal-overlay');
+        
+        function openContact() {
+            contactModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContact() {
+            contactModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        contactModal.addEventListener('click', (e) => {
+            if (e.target === contactModal) closeContact();
+        });
+
+
+        /* AJAX CONTACT FORM HANDLING */
+        const popupForm = document.getElementById("popup-contact-form");
+        const popupStatus = document.getElementById("popup-form-status");
+        const popupSubmitBtn = document.getElementById("popup-submit-btn");
+
+        if(popupForm) {
+            popupForm.addEventListener("submit", async function(event) {
+                event.preventDefault();
+                
+                const originalBtnText = popupSubmitBtn.innerText;
+                popupSubmitBtn.innerText = "sending...";
+                popupSubmitBtn.disabled = true;
+
+                const data = new FormData(event.target);
+
+                try {
+                    const response = await fetch(event.target.action, {
+                        method: popupForm.method,
+                        body: data,
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        popupForm.style.display = "none";
+                        popupStatus.style.display = "block";
+                        popupForm.reset();
+                    } else {
+                        const jsonData = await response.json();
+                        alert("Error: " + (jsonData.errors ? jsonData.errors.map(e => e.message).join(", ") : "Something went wrong."));
+                        popupSubmitBtn.innerText = originalBtnText;
+                        popupSubmitBtn.disabled = false;
+                    }
+                } catch (error) {
+                    alert("Oops! Connection problem.");
+                    popupSubmitBtn.innerText = originalBtnText;
+                    popupSubmitBtn.disabled = false;
+                }
+            });
+        }
+
 
         /* SLIDER */
         const slider = document.getElementById('slider');
@@ -657,7 +762,7 @@
             const preloader = document.getElementById('preloader');
             setTimeout(() => {
             preloader.classList.add('hidden');
-            }, 500); 
+            }, 4000); 
         });
     </script>
 
