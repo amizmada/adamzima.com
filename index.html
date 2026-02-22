@@ -1,770 +1,823 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
-    <title>adam zima</title>
-    <link rel="icon" type="image/png" href="https://www.adamzima.com/assets/favicon.png" sizes="192x192">
-    <link rel="icon" type="image/png" href="https://www.adamzima.com/assets/favicon.png" sizes="32x32">
-    <link rel="apple-touch-icon" href="https://www.adamzima.com/assets/apple-icon.png">
-    <meta property="og:title" content="adam zima">
-    <meta property="og:description" content="digital & print design">
-    <meta property="og:image" content="/assets/adamzima.jpg"> 
-    <meta property="og:url" content="https://www.adamzima.com">
-    
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T9J5Z45NLJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-T9J5Z45NLJ');
+  </script>
 
-    <style>
-        :root {
-            --bg-color: #fbfbfd;
-            --text-main: #1d1d1f;
-            --text-muted: #86868b;
-            --accent: #CFFF00;
-            --max-width: 1300px;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>adam zima</title>
 
-        * { 
-            margin: 0; padding: 0; box-sizing: border-box; 
-            -webkit-tap-highlight-color: transparent;
-        }
+  <link rel="icon" type="image/png" href="https://www.adamzima.cz/assets/favicon.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="https://www.adamzima.cz/assets/favicon.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="https://www.adamzima.cz/assets/apple-icon.png">
 
-        /* 1. SELECTION HIGHLIGHT */
-        ::selection {
-            background-color: var(--accent);
-            color: #000;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:ital,wght@1,900&display=swap" rel="stylesheet">
 
-        /* 2. CUSTOM SCROLLBAR (Chrome, Safari, Edge) */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background-color: rgba(0, 0, 0, 0.2);
-            border-radius: 20px;
-            border: 3px solid transparent; 
-            background-clip: content-box;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background-color: rgba(0, 0, 0, 0.4);
-        }
+  <style>
+    :root{
+      --bg-color:#fbfbfd;
+      --text-main:#1d1d1f;
+      --text-muted:#86868b;
+      --accent:#CFFF00;
+      --max-width:1200px;
+      --card-radius:20px;
+    }
 
-        html { scroll-behavior: smooth; }
+    *{ margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+    ::selection{ background-color:var(--accent); color:#000; }
 
-        body {
-            font-family: "Inter", -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            position: relative;
-            min-height: 100vh;
-            padding-bottom: 150px;
-        }
+    ::-webkit-scrollbar{ width:6px; }
+    ::-webkit-scrollbar-track{ background:transparent; }
+    ::-webkit-scrollbar-thumb{ background-color:rgba(0,0,0,0.2); border-radius:10px; }
 
-        @keyframes fadeInPage {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    html{ scroll-behavior:smooth; }
 
-        /* Animate header and projects */
-        header, .projects-container, .archive-section, .contact-section {
-            animation: fadeInPage 1s ease-out;
-        }
+    body{
+      font-family:"Inter",-apple-system,sans-serif;
+      background-color:var(--bg-color);
+      color:var(--text-main);
+      line-height:1.6;
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+      background-image:
+        radial-gradient(at 0% 0%, rgba(207,255,0,0.04) 0px, transparent 40%),
+        radial-gradient(at 100% 100%, rgba(207,255,0,0.04) 0px, transparent 40%);
+    }
 
-        /* --- BACKGROUND --- */
-        #soft-glow {
-            position: fixed; top: 0; left: 0; width: 900px; height: 900px;
-            background: radial-gradient(circle, rgba(207, 255, 0, 0.35) 0%, rgba(255, 255, 255, 0) 70%);
-            z-index: -1; pointer-events: none; mix-blend-mode: normal; 
-            filter: blur(140px); transform: translate(-50%, -50%); will-change: transform;
-        }
+    /* --- PRELOADER --- */
+    #preloader{
+      position:fixed; top:0; left:0; width:100%; height:100%;
+      background:var(--bg-color); z-index:9999;
+      display:flex; justify-content:center; align-items:center;
+      transition:transform 0.8s cubic-bezier(0.7,0,0.2,1);
+    }
+    .loader-mask{ overflow:hidden; display:inline-block; padding:10px; }
+    .loader-text{
+      display:inline-block; font-weight:600; font-size:1.4rem; letter-spacing:-1px;
+      transform:translateY(100%);
+      animation:slideUpLoader 1s cubic-bezier(0.16,1,0.3,1) forwards 0.2s,
+               pulseText 1.5s infinite ease-in-out 1.2s;
+    }
+    @keyframes slideUpLoader{ to{ transform:translateY(0); } }
+    @keyframes pulseText{ 0%,100%{ opacity:0.4; } 50%{ opacity:1; } }
+    #preloader.hidden{ transform:translateY(-100%); pointer-events:none; }
 
-        /* --- NAVIGATION --- */
-        nav {
-            position: fixed; top: 0; left: 0; width: 100%; height: 70px; padding: 0 50px;
-            display: flex; justify-content: space-between; align-items: center;
-            background: rgba(251, 251, 253, 0.85); backdrop-filter: blur(20px);
-            z-index: 1000;
-        }
-        
-        .logo { font-weight: 600; font-size: 0.95rem; color: #000; letter-spacing: -0.5px; cursor: pointer; }
-        
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links a { 
-            font-size: 0.85rem; color: var(--text-main); text-decoration: none; font-weight: 500; 
-            transition: opacity 0.3s; cursor: pointer; 
-        }
-        .nav-links a:hover { opacity: 0.6; }
+    /* --- REVEAL --- */
+    .reveal-up{
+      opacity:0; transform:translateY(40px);
+      transition:opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal-up.is-visible{ opacity:1; transform:translateY(0); }
 
-        /* --- HERO --- */
-        header {
-            height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
-            padding: 0 50px; max-width: var(--max-width); margin: 0 auto; padding-top: 70px;
-        }
-        h1 {
-            font-size: 4.5rem; font-weight: 600; letter-spacing: -2px; line-height: 1.1; margin-bottom: 30px;
-            max-width: 900px; opacity: 0; animation: fadeUp 1s ease forwards 0.3s; color: #111;
-        }
-        p.hero-desc {
-            font-size: 1.2rem; color: var(--text-muted); max-width: 550px; font-weight: 400; line-height: 1.6;
-            opacity: 0; animation: fadeUp 1s ease forwards 0.5s;
-        }
+    /* --- NAV --- */
+    nav{
+      position:fixed; top:0; left:0; width:100%; height:80px; padding:0 50px;
+      display:flex; justify-content:space-between; align-items:center;
+      background:rgba(251,251,253,0.85); backdrop-filter:blur(20px);
+      z-index:1000;
+    }
+    .logo{ font-weight:600; font-size:0.95rem; color:#000; letter-spacing:-0.5px; cursor:pointer; }
+    .nav-links{ display:flex; gap:30px; align-items:center; }
+    .animated-link{
+      position:relative; font-size:0.85rem; color:var(--text-main); text-decoration:none;
+      font-weight:500; cursor:pointer; padding-bottom:2px; display:inline-block;
+    }
+    .animated-link::after{
+      content:''; position:absolute; width:100%; height:2px; bottom:0; left:0;
+      background-color:var(--accent);
+      transform:scaleX(0); transform-origin:bottom right; transition:transform 0.3s ease-out;
+    }
+    .animated-link:hover::after{ transform:scaleX(1); transform-origin:bottom left; }
 
-        /* --- PROJECTS --- */
-        .projects-container { max-width: var(--max-width); margin: 0 auto; padding: 50px 50px; }
-        
-        .project-row {
-            display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 200px;
-            opacity: 0; transform: translateY(50px); transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .project-row.visible { opacity: 1; transform: translateY(0); }
-        .project-row:nth-child(even) { flex-direction: row-reverse; }
+    /* --- TEXT LINK (MARKER EFFECT) --- */
+    .text-link {
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 600;
+      background-image: linear-gradient(var(--accent), var(--accent));
+      background-size: 100% 30%;
+      background-repeat: no-repeat;
+      background-position: 0 90%;
+      transition: background-size 0.25s ease-in-out;
+      padding: 0 2px;
+    }
+    .text-link:hover {
+      background-size: 100% 100%;
+      cursor: pointer;
+    }
 
-        .image-container {
-            position: relative; border-radius: 0; cursor: pointer;
-            filter: drop-shadow(1px 1px 10px rgba(0,0,0,0.05)); transition: opacity 0.3s;
-        }
-        .image-container:hover { opacity: 0.9; }
-        .project-img { width: 100%; height: auto; object-fit: contain; display: block; }
-        .project-text { flex: 1; padding: 0 60px; align-self: center; }
+    /* --- HERO --- */
+    header{
+      height:80vh; display:flex; flex-direction:column; justify-content:center; align-items:flex-start;
+      padding:0 50px; max-width:var(--max-width); margin:0 auto;
+    }
+    .hero-title{
+      font-size:clamp(3rem,7vw,4.5rem); font-weight:600; letter-spacing:-2px; line-height:1.1;
+      margin-bottom:25px; max-width:900px; color:#111;
+    }
+    .hero-desc{ font-size:1.2rem; color:var(--text-muted); max-width:550px; font-weight:400; line-height:1.6; }
 
-        .text-label { display: block; font-size: 0.75rem; letter-spacing: 1.5px; color: #999; font-weight: 600; margin-bottom: 15px; }
-        h2 { font-size: 2.8rem; font-weight: 600; letter-spacing: -1.5px; margin-bottom: 20px; line-height: 1.1; color: #1d1d1f; }
-        p.desc { font-size: 1.05rem; color: #555; line-height: 1.6; margin-bottom: 35px; max-width: 450px; }
+    /* --- PROJECTS: 2 FLEX COLUMNS + JS BALANCE --- */
+    .projects-wrap{
+      max-width:var(--max-width);
+      margin:0 auto;
+      padding:0 50px 100px 50px;
+      display:flex;
+      gap:40px;
+      align-items:flex-start;
+    }
+    .projects-col{
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      gap:60px;
+      min-width:0;
+    }
 
-        /* BUTTON */
-        .liquid-btn {
-            display: inline-block; padding: 12px 30px; font-size: 0.9rem; font-weight: 500; color: var(--text-main); text-decoration: none;
-            border-radius: 100px; background: rgba(255, 255, 255, 0.6); border: 1px solid rgba(0, 0, 0, 0.08);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03); transition: all 0.4s ease; position: relative; overflow: hidden; cursor: pointer;
-            -webkit-appearance: none; color: var(--text-main) !important;
-        }
-        .liquid-btn:hover { border-color: rgba(0, 0, 0, 0.2); transform: translateY(-2px); }
-        .liquid-btn::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--accent); opacity: 0; z-index: -1; transition: opacity 0.4s ease; filter: blur(15px);
-        }
-        .liquid-btn:hover::before { opacity: 0.4; }
-        
-        .liquid-btn:disabled { opacity: 0.7; cursor: wait; }
+    .project-card{
+      display:block;
+      width:100%;
+      background:transparent;
+      border:none;
+      cursor:pointer;
+      position:relative;
+      z-index:1;
 
-        .landscape .image-container { width: 65%; }
-        .portrait .image-container { width: 45%; }
+      /* anti-flicker layers */
+      transform:translateZ(0);
+      -webkit-transform:translateZ(0);
+      backface-visibility:hidden;
+      -webkit-backface-visibility:hidden;
+      will-change:transform;
 
-        /* --- ARCHIVE --- */
-        .archive-section { width: 100%; margin: 0 auto; padding: 0 0 100px 0; overflow: hidden; }
-        .archive-header {
-            max-width: var(--max-width); margin: 0 auto 40px auto; padding: 60px 50px 0 50px;
-            border-top: 1px solid rgba(0,0,0,0.05);
-        }
-        .archive-header h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 10px; color: var(--text-main); }
-        .archive-header p { font-size: 0.9rem; color: var(--text-muted); }
+      /* repaint isolation */
+      contain:paint;
+    }
 
-        .archive-slider {
-            display: flex; gap: 20px; overflow-x: auto; padding: 0 50px 30px 50px;
-            scrollbar-width: none; -ms-overflow-style: none;  
-            cursor: grab; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;
-            align-items: flex-start; 
-        }
-        .archive-slider::-webkit-scrollbar { display: none; }
-        .archive-slider:active { cursor: grabbing; }
+    .card-img-wrap{
+      width:100%;
+      border-radius:var(--card-radius);
+      overflow:hidden;
+      background:#f9f9fb;
 
-        .archive-item {
-            height: 400px; width: auto; flex-shrink: 0; position: relative; transition: transform 0.3s ease;
-            background: #f0f0f0; cursor: pointer;
-        }
-        .archive-item img {
-            height: 100%; width: auto; display: block;
-            transition: opacity 0.3s ease; opacity: 0.9; pointer-events: none; 
-        }
-        .archive-item:hover img { opacity: 1; }
+      position:relative;
+      transform:translate3d(0,0,0);
+      -webkit-transform:translate3d(0,0,0);
+      will-change:transform;
+      transition:transform 0.4s ease;
+    }
 
-        /* --- CONTACT SECTION (text only) --- */
-        .contact-section {
-            max-width: var(--max-width); margin: 0 auto; padding: 100px 50px;
-            border-top: 1px solid #eee; text-align: center;
-        }
-        .contact-link-large {
-            font-size: 3.5rem; font-weight: 600; letter-spacing: -1.5px;
-            color: var(--text-main); text-decoration: none;
-            transition: color 0.3s; display: inline-block; margin-top: 10px; cursor: pointer;
-        }
-        .contact-link-large:hover { color: #999; }
-        .contact-sub { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 0; }
+    /* shadow via pseudo-element */
+    .card-img-wrap::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius:inherit;
+      box-shadow:0 15px 35px rgba(0,0,0,0.06);
+      opacity:0;
+      transition:opacity 0.4s ease;
+      pointer-events:none;
+    }
 
-        /* --- FLOATING DOCK --- */
-        .floating-dock {
-            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.5); box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-            padding: 12px 30px; border-radius: 100px; z-index: 999;
-            display: flex; align-items: center; gap: 30px;
-            font-size: 0.85rem; color: var(--text-main); white-space: nowrap;
-        }
-        .dock-item { color: var(--text-main); text-decoration: none; font-weight: 500; transition: 0.2s ease; padding: 6px 12px; border-radius: 50px; }
-        .dock-item:hover { background-color: var(--accent); color: #000000; }
-        .dock-divider { width: 1px; height: 15px; background: rgba(0,0,0,0.1); margin: 0 5px; }
-        .dock-copy { color: var(--text-main); font-weight: 500; font-size: 0.8rem; padding: 0 10px; }
+    .project-img{
+      width:100%;
+      height:auto;
+      display:block;
+      transform:translate3d(0,0,0) scale(1);
+      -webkit-transform:translate3d(0,0,0) scale(1);
+      will-change:transform;
+      transition:transform 0.5s ease;
+    }
 
-        footer { height: 50px; }
+    .card-body{ padding:25px 10px 0 10px; }
+    .card-label{
+      font-size:0.75rem; color:#999; letter-spacing:1.5px; font-weight:600;
+      margin-bottom:8px; display:block; text-transform:lowercase;
+    }
+    .card-title{
+      font-size:1.8rem; font-weight:600; letter-spacing:-1px;
+      margin-bottom:15px; color:#1d1d1f;
+    }
 
-        /* --- MODAL (GENERAL) --- */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
-            z-index: 2000; opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
-            overflow-y: auto; padding: 0; -webkit-overflow-scrolling: touch;
-        }
-        .modal-overlay.active { opacity: 1; pointer-events: all; }
+    .project-card:hover .card-img-wrap{
+      transform:translate3d(0,-6px,0);
+      -webkit-transform:translate3d(0,-6px,0);
+    }
+    .project-card:hover .card-img-wrap::after{ opacity:1; }
+    .project-card:hover .project-img{
+      transform:translate3d(0,0,0) scale(1.02);
+      -webkit-transform:translate3d(0,0,0) scale(1.02);
+    }
 
-        .modal-container {
-            max-width: 900px; margin: 80px auto; padding: 0 20px 80px 20px;
-            transform: translateY(30px); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .modal-overlay.active .modal-container { transform: translateY(0); }
+    /* BUTTON */
+    .liquid-btn{
+      display:inline-flex; justify-content:center; align-items:center;
+      padding:14px 32px; font-size:0.9rem; font-weight:500; color:#000;
+      border-radius:100px; background:var(--accent); border:none; cursor:pointer;
+      transition:transform 0.3s ease, filter 0.3s ease; text-decoration:none;
+    }
+    .liquid-btn:hover{ filter:brightness(0.95); transform:scale(1.02); }
 
-        .close-modal {
-            position: fixed; top: 25px; right: 40px; z-index: 2001;
-            border: none; cursor: pointer; font-size: 0.9rem; font-weight: 500;
-            background: rgba(255,255,255,0.8); backdrop-filter: blur(10px);
-            color: var(--text-main); -webkit-appearance: none; appearance: none;
-            padding: 8px 16px; border-radius: 30px; transition: opacity 0.3s;
-        }
-        .close-modal:hover { opacity: 0.7; }
+    /* --- ARCHIVE --- */
+    .archive-section{ width:100%; margin:0 auto; padding:0 0 100px 0; overflow:hidden; }
+    .archive-wrapper{ max-width:var(--max-width); margin:0 auto; padding:0 50px; }
+    .archive-header{ margin:0 auto 40px auto; padding:60px 0 0 0; border-top:1px solid rgba(0,0,0,0.05); }
+    .archive-header h3{ font-size:1.5rem; font-weight:600; margin-bottom:10px; }
+    .archive-header p{ font-size:0.9rem; color:var(--text-muted); }
 
-        .about-text-content .modal-title { font-size: 2.2rem; font-weight: 400; letter-spacing: -1px; line-height: 1.3; }
-        .modal-meta { font-size: 0.8rem; color: #999; letter-spacing: 1.5px; margin-bottom: 30px; display: block; }
-        .modal-desc { font-size: 1rem; color: #444; line-height: 1.7; max-width: 100%; margin-bottom: 50px; }
-        
-        .modal-gallery { display: flex; flex-direction: column; gap: 60px; }
-        .modal-gallery img { width: 100%; height: auto; display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+    .archive-slider{ display:flex; gap:20px; overflow-x:auto; padding-bottom:30px; scrollbar-width:none; cursor:grab; align-items:flex-start; }
+    .archive-slider::-webkit-scrollbar{ display:none; }
 
-        .about-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; align-items: start; }
-        .about-photo { width: 100%; aspect-ratio: 3/4; background: #ddd; object-fit: cover; border-radius: 12px; }
-        
-        .text-link {
-            text-decoration: none; color: #000; font-weight: 600;
-            background-image: linear-gradient(#CFFF00, #CFFF00);
-            background-size: 100% 20%; background-repeat: no-repeat; background-position: 0 90%;
-            transition: background-size 0.25s ease-in-out; padding: 0 2px;
-        }
-        .text-link:hover { background-size: 100% 100%; cursor: pointer; }
+    .archive-item{
+      height:400px; flex-shrink:0; background:#f0f0f0; cursor:pointer;
+      border-radius:12px; overflow:hidden;
+      position:relative;
+      transform:translate3d(0,0,0);
+      -webkit-transform:translate3d(0,0,0);
+      will-change:transform;
+      transition:transform 0.4s ease;
+      contain:paint;
+    }
+    .archive-item img{
+      height:100%; width:auto; display:block; opacity:0.9;
+      pointer-events:none; transition:0.4s ease;
+      transform:scale(1) translateZ(0);
+    }
+    .archive-item:hover{ transform:translate3d(0,-4px,0); -webkit-transform:translate3d(0,-4px,0); }
+    .archive-item:hover img{ opacity:1; transform:scale(1.01) translateZ(0); }
 
-        /* --- CONTACT FORM STYLES --- */
-        .contact-form {
-            max-width: 500px; margin: 0; text-align: left; display: flex; flex-direction: column; gap: 20px;
-        }
-        .form-group { width: 100%; }
-        .form-input {
-            width: 100%; padding: 15px 20px; background: #fff; border: 1px solid rgba(0,0,0,0.1);
-            border-radius: 12px; font-family: "Inter", sans-serif; font-size: 1rem; color: var(--text-main);
-            transition: all 0.3s ease; outline: none; resize: none;
-        }
-        .form-input:focus { border-color: #000; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        .form-input::placeholder { color: #aaa; font-weight: 400; }
+    /* --- CONTACT --- */
+    .contact-section{
+      max-width:var(--max-width); margin:0 auto; padding:100px 50px;
+      border-top:1px solid #eee; text-align:center;
+    }
+    .contact-link-large{
+      position:relative; font-size:3.5rem; font-weight:600; letter-spacing:-1.5px;
+      color:var(--text-main); text-decoration:none; display:inline-block;
+      margin-top:10px; cursor:pointer; padding-bottom:5px;
+    }
+    .contact-link-large::after{
+      content:''; position:absolute; width:100%; height:6px; bottom:0; left:0;
+      background-color:var(--accent);
+      transform:scaleX(0); transform-origin:bottom right;
+      transition:transform 0.4s ease-out;
+      z-index:-1;
+    }
+    .contact-link-large:hover::after{ transform:scaleX(1); transform-origin:bottom left; }
 
-        /* --- SERVICES STYLES --- */
-        .services-list {
-            margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(0,0,0,0.1);
-        }
-        .services-list h4 {
-            font-size: 0.8rem; color: #999; letter-spacing: 1.5px; font-weight: 600; margin-bottom: 20px; text-transform: lowercase;
-        }
-        .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .service-item {
-            font-size: 1rem; font-weight: 500; color: #111; display: flex; align-items: center; gap: 10px;
-        }
-        .service-item::before {
-            content: ''; display: block; width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
-        }
+    /* --- DOCK --- */
+    .floating-dock{
+      position:fixed; bottom:30px; left:50%; transform:translateX(-50%);
+      background:rgba(255,255,255,0.85); backdrop-filter:blur(16px);
+      border:1px solid rgba(0,0,0,0.05);
+      box-shadow:0 20px 40px rgba(0,0,0,0.06);
+      padding:10px 25px; border-radius:100px; z-index:999;
+      display:flex; align-items:center; gap:20px; font-size:0.85rem;
+      color:var(--text-main); white-space:nowrap;
+    }
+    .dock-item{
+      color:var(--text-main); text-decoration:none; font-weight:500;
+      transition:all 0.2s ease; padding:8px 16px; border-radius:50px;
+    }
+    .dock-item:hover{ background-color:var(--accent); color:#000; }
 
-        /* MEDIA QUERIES */
-        @media (max-width: 1024px) { .project-text { padding: 0 40px; } h1 { font-size: 3.5rem; } }
-        
-        @media (max-width: 768px) {
-            nav { padding: 0 20px; } header { padding: 0 20px; padding-top: 100px; }
-            h1 { font-size: 2.8rem; letter-spacing: -1px; }
-            .projects-container { padding: 0 20px 100px 20px; }
-            .project-row, .project-row:nth-child(even) { flex-direction: column; align-items: flex-start; margin-bottom: 100px; }
-            .landscape .image-container, .portrait .image-container { width: 100%; margin-bottom: 30px; }
-            .project-text { padding: 0; width: 100%; }
-            .archive-header { padding: 60px 20px 0 20px; }
-            .archive-slider { padding: 0 20px 20px 20px; }
-            .archive-item { height: 250px; }
-            .contact-section { padding: 60px 20px; }
-            .contact-link-large { font-size: 2rem; word-break: break-word; }
-            .about-grid { grid-template-columns: 1fr; gap: 30px; }
-            .floating-dock { 
-                width: max-content; max-width: 90%; justify-content: center; gap: 15px; bottom: 20px; padding: 10px 25px; overflow-x: visible; 
-            }
-            .dock-item { padding: 6px 5px; font-size: 0.75rem; }
-            .dock-copy, .dock-divider { display: none; }
-            .close-modal { top: 20px; right: 20px; }
-            .about-text-content .modal-title { font-size: 1.8rem;}
-            #soft-glow { width: 400px; height: 400px; filter: blur(90px); }
-            .services-grid { grid-template-columns: 1fr; }
-        }
+    .dock-copy{ color:var(--text-muted); font-weight:500; font-size:0.8rem; padding-left:10px; }
+    .dock-divider{ width:1px; height:15px; background:rgba(0,0,0,0.1); margin:0 5px; }
 
-        #preloader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #fbfbfd; z-index: 9999;
-            display: flex; justify-content: center; align-items: center;
-            transition: opacity 0.6s ease, visibility 0.6s ease;
-        }
-        .loader-text {
-            font-weight: 600; font-size: 1.2rem; letter-spacing: -0.5px;
-            animation: pulse 1.5s infinite ease-in-out;
-        }
-        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
-        #preloader.hidden { opacity: 0; visibility: hidden; }
+    .svg-logo{ display:flex; align-items:center; justify-content:center; padding:6px 16px; border-radius:50px; transition:background-color 0.2s ease; }
+    .svg-logo:hover{ background-color:var(--accent); }
+    .zet-icon{ height:16px; width:auto; display:block; }
 
-        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-    </style>
+    /* --- MODAL --- */
+    .modal-overlay{
+      position:fixed; top:0; left:0; width:100%; height:100%;
+      background:rgba(255,255,255,0.95); backdrop-filter:blur(10px);
+      z-index:2000; opacity:0; pointer-events:none; transition:opacity 0.4s ease;
+      overflow-y:auto;
+    }
+    .modal-overlay.active{ opacity:1; pointer-events:all; }
+    .modal-container{ max-width:900px; margin:80px auto; padding:0 20px 80px 20px; }
+
+    .close-modal{
+      position:fixed; top:0; right:50px; height:80px;
+      border:none; cursor:pointer; background:transparent;
+      font-family:inherit; font-size:0.85rem; font-weight:500; color:var(--text-main);
+      z-index:2001; display:flex; align-items:center;
+    }
+    .close-modal span{ position:relative; padding-bottom:2px; }
+    .close-modal span::after{
+      content:''; position:absolute; width:100%; height:2px; bottom:0; left:0;
+      background-color:var(--accent);
+      transform:scaleX(0); transform-origin:bottom right; transition:transform 0.3s ease-out;
+    }
+    .close-modal:hover span::after{ transform:scaleX(1); transform-origin:bottom left; }
+
+    .about-grid{ display:grid; grid-template-columns:1fr 1.5fr; gap:60px; align-items:center; }
+    .about-photo{
+      width:100%; aspect-ratio:3/4; background:#ddd; object-fit:cover;
+      border-radius:20px; box-shadow:0 20px 40px rgba(0,0,0,0.08);
+      position:relative; top:0; transition:top 0.4s ease;
+    }
+    .about-photo:hover{ top:-5px; }
+
+    .about-title{
+      font-size:clamp(2.5rem,5vw,4rem); font-weight:600; letter-spacing:-2px;
+      margin-bottom:20px; color:var(--text-main); line-height:1.1;
+    }
+    .about-desc{ font-size:1.1rem; color:#555; line-height:1.7; margin-bottom:40px; max-width:600px; }
+
+    .services-list{ margin-top:40px; padding-top:40px; border-top:1px solid rgba(0,0,0,0.06); }
+    .services-list h4{
+      font-size:0.75rem; color:#999; letter-spacing:1.5px; font-weight:600;
+      margin-bottom:20px; text-transform:uppercase;
+    }
+    .services-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .service-item{ font-size:1.05rem; font-weight:400; color:#333; display:flex; align-items:center; gap:12px; transition:color 0.3s ease; }
+    .service-item:hover{ color:#000; }
+    .service-item::before{ content:''; display:block; width:8px; height:8px; background:var(--accent); border-radius:50%; }
+
+    .contact-form{ max-width:500px; margin:0; text-align:left; display:flex; flex-direction:column; gap:20px; }
+    .form-group{ width:100%; }
+    .form-input{
+      width:100%; padding:18px 20px; background:#fff;
+      border:1px solid rgba(0,0,0,0.1); border-radius:12px;
+      font-family:"Inter",sans-serif; font-size:1rem; color:var(--text-main);
+      transition:all 0.3s ease; outline:none; resize:none;
+    }
+    .form-input:focus{ border-color:#000; box-shadow:0 4px 12px rgba(0,0,0,0.05); }
+    #popup-submit-btn{ width:100%; padding:18px; font-size:1.05rem; margin-top:10px; }
+
+    @media (max-width:768px){
+      nav, header{ padding:0 20px; }
+      .hero-title{ font-size:2.8rem; }
+
+      .projects-wrap{
+        padding:0 20px 80px 20px;
+        flex-direction:column;
+        gap:60px;
+      }
+
+      .archive-wrapper{ padding:0 20px; }
+      .archive-item{ height:250px; }
+      .contact-link-large{ font-size:2.2rem; }
+      .floating-dock{ gap:10px; padding:10px 15px; width:max-content; max-width:95%; }
+      .dock-item{ padding:6px 12px; font-size:0.75rem; }
+      .dock-copy, .dock-divider{ display:none; }
+      .about-grid{ grid-template-columns:1fr; gap:30px; }
+      .about-photo{ aspect-ratio:4/3; }
+      .services-grid{ grid-template-columns:1fr; }
+      .close-modal{ right:20px; }
+    }
+  </style>
 </head>
+
 <body>
-    <div id="preloader">
-    <span class="loader-text">adam zima</span>
+  <div id="preloader">
+    <div class="loader-mask">
+      <span class="loader-text">adam zima</span>
     </div>
+  </div>
 
-    <div id="soft-glow"></div>
-
-    <nav>
-        <div class="logo" onclick="window.scrollTo(0,0);">adam zima</div>
-        <div class="nav-links">
-            <a onclick="openAbout()">about</a>
-            <a onclick="openContact()">get in touch</a>
-        </div>
-    </nav>
-
-    <header>
-        <h1>digital & print design</h1>
-        <p class="hero-desc">i create clean visual identities and functional graphics</p>
-    </header>
-
-    <div class="projects-container" id="work">
-
-        <div class="project-row landscape reveal">
-            <div class="image-container" onclick="openProject(0)">
-                <img src="assets/uludvicka/uludvicka.png" alt="U LUDVÍČKA" class="project-img" loading="lazy">
-            </div>
-            <div class="project-text">
-                <span class="text-label">webdesign / digital</span>
-                <h2>U LUDVÍČKA</h2>
-                <p class="desc">web design and digital design for Apartment U Ludvíčka.</p>
-                <button class="liquid-btn" onclick="openProject(0)">view project</button>
-            </div>
-        </div>
-
-        <div class="project-row landscape reveal">
-            <div class="image-container" onclick="openProject(1)">
-                <img src="assets/domix/domix.webp" alt="U LUDVÍČKA" class="project-img" loading="lazy">
-            </div>
-            <div class="project-text">
-                <span class="text-label">webdesign / digital</span>
-                <h2>DOMIX</h2>
-                <p class="desc">web design and digital design for a home accessories store.</p>
-                <button class="liquid-btn" onclick="openProject(1)">view project</button>
-            </div>
-        </div>
-
-        <div class="project-row landscape reveal">
-            <div class="image-container" onclick="openProject(2)">
-                <img src="assets/pitstop/mac.webp" alt="PIT STOP F1" class="project-img" loading="lazy">
-            </div>
-            <div class="project-text">
-                <span class="text-label">ui / digital</span>
-                <h2>PIT STOP F1</h2>
-                <p class="desc">strategic formula 1 simulator. design of user interface and game mechanics.</p>
-                <button class="liquid-btn" onclick="openProject(2)">view project</button>
-            </div>
-        </div>
-        
-        <div class="project-row portrait reveal">
-            <div class="image-container" onclick="openProject(3)">
-                <img src="assets/maturitni_ples/maturitni_ples.webp" alt="prom" class="project-img" loading="lazy">
-            </div>
-            <div class="project-text">
-                <span class="text-label">event identity / print</span>
-                <h2>prom</h2>
-                <p class="desc">visual identity for a high school prom. bold typography and gold accents.</p>
-                <button class="liquid-btn" onclick="openProject(3)">view project</button>
-            </div>
-        </div>
-
-        <div class="project-row landscape reveal">
-            <div class="image-container" onclick="openProject(4)">
-                <img src="assets/informacni_tabule/informacni_tabule.webp" alt="information board" class="project-img" loading="lazy">
-            </div>
-            <div class="project-text">
-                <span class="text-label">layout / print</span>
-                <h2>information board</h2>
-                <p class="desc">graphic design of an information board for a jewish cemetery.</p>
-                <button class="liquid-btn" onclick="openProject(4)">view project</button>
-            </div>
-        </div>
-
-        <div class="project-row portrait reveal">
-            <div class="image-container" onclick="openProject(5)">
-                <img src="assets/gymsos_news/gymsos_news.webp" alt="gymsos news" class="project-img" loading="lazy">
-            </div>
-            <div class="project-text">
-                <span class="text-label">editorial / print</span>
-                <h2>GYMSOS NEWS</h2>
-                <p class="desc">high school student magazine. typesetting, typography and editorial design.</p>
-                <button class="liquid-btn" onclick="openProject(5)">view project</button>
-            </div>
-        </div>
-
-        <div class="project-row portrait reveal">
-            <div class="image-container" onclick="openProject(6)">
-                <img src="assets/tablo_figurky/tablo_figurky.webp" alt="graduation layout figurines" class="project-img" loading="lazy">
-            </div>
-            <div class="project-text">
-                <span class="text-label">layout & edit / print</span>
-                <h2>graduation layout</h2>
-                <p class="desc">creative graduation class composite in fashion magazine style. studio photography.</p>
-                <button class="liquid-btn" onclick="openProject(6)">view project</button>
-            </div>
-        </div>
-
-        <div class="project-row landscape reveal">
-            <div class="image-container" onclick="openProject(7)">
-                <img src="assets/tablo_vogue/tablo_vogue.webp" alt="graduation layout vogue" class="project-img" loading="lazy">
-            </div>
-            <div class="project-text">
-                <span class="text-label">layout and edit / print</span>
-                <h2>graduation layout</h2>
-                <p class="desc">graduation class composite inspired by a fashion magazine.</p>
-                <button class="liquid-btn" onclick="openProject(7)">view project</button>
-            </div>
-        </div>
-
-        <div class="project-row portrait reveal">
-            <div class="image-container" onclick="openProject(8)">
-                <img src="assets/tablo_netflix/tablo_netflix.webp" alt="netflix layout" class="project-img" loading="lazy">
-            </div>
-            <div class="project-text">
-                <span class="text-label">layout and edit / print</span>
-                <h2>graduation layout</h2>
-                <p class="desc">graduation class composite inspired by a streaming platform.</p>
-                <button class="liquid-btn" onclick="openProject(8)">view project</button>
-            </div>
-        </div>
-
+  <nav>
+    <div class="logo" onclick="window.scrollTo(0,0);">adam zima</div>
+    <div class="nav-links">
+      <a onclick="openAbout()" class="animated-link">about me</a>
+      <a onclick="openContact()" class="animated-link">contact me</a>
     </div>
+  </nav>
 
-    <section class="archive-section reveal">
-        <div class="archive-header">
-            <h3>archive</h3>
-            <p>selection of other works</p>
+  <header>
+    <h1 class="hero-title" id="heroTitle">digital & print design</h1>
+    <p class="hero-desc">crafting clean visual identities and functional graphics</p>
+  </header>
+
+  <div class="projects-wrap" id="work">
+    <div class="projects-col" id="col-left"></div>
+    <div class="projects-col" id="col-right"></div>
+
+    <div id="projects-pool" style="display:none;">
+      <div class="project-card reveal-up" onclick="openProject(0)">
+        <div class="card-img-wrap"><img src="assets/uludvicka/uludvicka.png" class="project-img" loading="lazy"></div>
+        <div class="card-body">
+          <span class="card-label">web design / digital</span>
+          <h2 class="card-title">U LUDVÍČKA</h2>
+          <div class="liquid-btn">view project</div>
         </div>
-        <div class="archive-slider" id="slider">
-            <div class="archive-item" onclick="openArchive(this)"><img src="assets/archiv/plakat_divadlo.webp" alt="poster" loading="lazy"></div>
-            <div class="archive-item" onclick="openArchive(this)"><img src="assets/archiv/diplom.webp" alt="diploma" loading="lazy"></div>
-            <div class="archive-item" onclick="openArchive(this)"><img src="assets/archiv/majales.webp" alt="poster" loading="lazy"></div>
-            <div class="archive-item" onclick="openArchive(this)"><img src="assets/archiv/studentske_volby.webp" alt="poster" loading="lazy"></div>
+      </div>
+
+      <div class="project-card reveal-up" onclick="openProject(1)">
+        <div class="card-img-wrap"><img src="assets/domix/domix.webp" class="project-img" loading="lazy"></div>
+        <div class="card-body">
+          <span class="card-label">web design / digital</span>
+          <h2 class="card-title">DOMIX</h2>
+          <div class="liquid-btn">view project</div>
         </div>
-    </section>
+      </div>
 
-    <section id="contact" class="contact-section">
-        <p class="contact-sub">have a project in mind?</p>
-        <a onclick="openContact()" class="contact-link-large">get in touch.</a>
-    </section>
+      <div class="project-card reveal-up" onclick="openProject(2)">
+        <div class="card-img-wrap"><img src="assets/pitstop/mac.webp" class="project-img" loading="lazy"></div>
+        <div class="card-body">
+          <span class="card-label">ui / digital</span>
+          <h2 class="card-title">PIT STOP F1</h2>
+          <div class="liquid-btn">view project</div>
+        </div>
+      </div>
 
-    <footer></footer>
+      <div class="project-card reveal-up" onclick="openProject(3)">
+        <div class="card-img-wrap"><img src="assets/maturitni_ples/maturitni_ples.webp" class="project-img" loading="lazy"></div>
+        <div class="card-body">
+          <span class="card-label">event identity / print</span>
+          <h2 class="card-title">graduation prom</h2>
+          <div class="liquid-btn">view project</div>
+        </div>
+      </div>
 
-    <div class="floating-dock">
-        <span class="dock-copy">© 2026 adam zima</span>
-        <div class="dock-divider"></div>
-        <a href="https://github.com/amizmada" class="dock-item">github</a>
-        <a href="https://www.linkedin.com/in/adam-zima-b99a3a207/" class="dock-item">linkedin</a>
-        <a href="mailto:adam@adamzima.com" class="dock-item">email</a>
+      <div class="project-card reveal-up" onclick="openProject(4)">
+        <div class="card-img-wrap"><img src="assets/informacni_tabule/informacni_tabule.webp" class="project-img" loading="lazy"></div>
+        <div class="card-body">
+          <span class="card-label">layout / print</span>
+          <h2 class="card-title">information board</h2>
+          <div class="liquid-btn">view project</div>
+        </div>
+      </div>
+
+      <div class="project-card reveal-up" onclick="openProject(5)">
+        <div class="card-img-wrap"><img src="assets/gymsos_news/gymsos_news.webp" class="project-img" loading="lazy"></div>
+        <div class="card-body">
+          <span class="card-label">editorial / print</span>
+          <h2 class="card-title">GYMSOS NEWS</h2>
+          <div class="liquid-btn">view project</div>
+        </div>
+      </div>
+
+      <div class="project-card reveal-up" onclick="openProject(6)">
+        <div class="card-img-wrap"><img src="assets/tablo_figurky/tablo_figurky.webp" class="project-img" loading="lazy"></div>
+        <div class="card-body">
+          <span class="card-label">layout & edit / print</span>
+          <h2 class="card-title">graduation layout</h2>
+          <div class="liquid-btn">view project</div>
+        </div>
+      </div>
+
+      <div class="project-card reveal-up" onclick="openProject(7)">
+        <div class="card-img-wrap"><img src="assets/tablo_vogue/tablo_vogue.webp" class="project-img" loading="lazy"></div>
+        <div class="card-body">
+          <span class="card-label">layout and edit / print</span>
+          <h2 class="card-title">graduation layout vogue</h2>
+          <div class="liquid-btn">view project</div>
+        </div>
+      </div>
+
+      <div class="project-card reveal-up" onclick="openProject(8)">
+        <div class="card-img-wrap"><img src="assets/tablo_netflix/tablo_netflix.webp" class="project-img" loading="lazy"></div>
+        <div class="card-body">
+          <span class="card-label">layout and edit / print</span>
+          <h2 class="card-title">graduation layout netflix</h2>
+          <div class="liquid-btn">view project</div>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <div id="modal-overlay" class="modal-overlay">
-        <button class="close-modal" onclick="closeModal()">close</button>
-        <div class="modal-container" id="modal-content"></div>
+  <section class="archive-section reveal-up">
+    <div class="archive-wrapper">
+      <div class="archive-header">
+        <h3>archive</h3>
+        <p>selection of other works</p>
+      </div>
+      <div class="archive-slider" id="slider">
+        <div class="archive-item" onclick="openArchive(this)"><img src="assets/archiv/plakat_divadlo.webp" alt="poster"></div>
+        <div class="archive-item" onclick="openArchive(this)"><img src="assets/archiv/diplom.webp" alt="diplom"></div>
+        <div class="archive-item" onclick="openArchive(this)"><img src="assets/archiv/majales.webp" alt="poster"></div>
+        <div class="archive-item" onclick="openArchive(this)"><img src="assets/archiv/studentske_volby.webp" alt="poster"></div>
+      </div>
     </div>
+  </section>
 
-    <div id="contact-modal-overlay" class="modal-overlay">
-        <button class="close-modal" onclick="closeContact()">close</button>
-        <div class="modal-container">
-            <span class="modal-meta">contact</span>
-            <h1 class="modal-title">get in touch.</h1>
-            <p class="modal-desc">have a project in mind or just want to ask a question?</p>
-            
-            <form id="popup-contact-form" action="https://formspree.io/f/xeeejrlr" method="POST" class="contact-form">
-                <div class="form-group">
-                    <input type="email" name="email" placeholder="your email" required class="form-input">
-                </div>
-                <div class="form-group">
-                    <textarea name="message" placeholder="how can i help you?" rows="8" required class="form-input"></textarea>
-                </div>
-                <button type="submit" class="liquid-btn" id="popup-submit-btn">send message</button>
-            </form>
+  <section id="contact" class="contact-section reveal-up">
+    <p style="color:var(--text-muted); font-size: 1.1rem; margin-bottom: 0;">have a project in mind?</p>
+    <a onclick="openContact()" class="contact-link-large">let's talk.</a>
+  </section>
 
-            <div id="popup-form-status" style="display: none; text-align: left; margin-top: 20px; color: var(--text-main);">
-                <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Thanks for the message!</h3>
-                <p style="color: var(--text-muted);">I'll get back to you as soon as possible.</p>
+  <div class="floating-dock">
+    <span class="dock-copy">© 2026 adam zima</span>
+    <div class="dock-divider"></div>
+    <a href="https://github.com/amizmada" class="dock-item" target="_blank">github</a>
+    <a href="mailto:adam@adamzima.com" class="dock-item">email</a>
+    <div class="dock-divider"></div>
+    <a href="https://zetdesign.cz" target="_blank" class="svg-logo" aria-label="zet_design">
+      <img src="assets/zet.svg" alt="zet_design" class="zet-icon">
+    </a>
+  </div>
+
+  <div id="modal-overlay" class="modal-overlay">
+    <button class="close-modal" onclick="closeModal()"><span>close</span></button>
+    <div class="modal-container" id="modal-content"></div>
+  </div>
+
+  <div id="contact-modal-overlay" class="modal-overlay">
+    <button class="close-modal" onclick="closeContact()"><span>close</span></button>
+    <div class="modal-container">
+      <span style="font-size: 0.8rem; color: #999; letter-spacing: 1.5px; margin-bottom: 30px; display: block; text-transform:uppercase; font-weight:600;">contact</span>
+      <h1 style="font-size: 2.2rem; font-weight: 600; letter-spacing: -1px; line-height: 1.3;">let's talk.</h1>
+      <p style="font-size: 1rem; color: #444; line-height: 1.7; margin-bottom: 50px;">have a project in mind or just want to ask something?</p>
+
+      <form id="popup-contact-form" action="https://formspree.io/f/xeeejrlr" method="POST" class="contact-form">
+        <div class="form-group">
+          <input type="email" name="email" placeholder="your email" required class="form-input">
+        </div>
+        <div class="form-group">
+          <textarea name="message" placeholder="how can i help you?" rows="6" required class="form-input"></textarea>
+        </div>
+        <button type="submit" class="liquid-btn" id="popup-submit-btn">send message</button>
+      </form>
+
+      <div id="popup-form-status" style="display: none; text-align: left; margin-top: 20px; color: var(--text-main);">
+        <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Thanks for your message!</h3>
+        <p style="color: var(--text-muted);">I'll get back to you as soon as possible.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const projects = [
+      { title: "U LUDVÍČKA", label: "web design / digital", desc: "website at <a href='https://www.uludvicka.cz' target='_blank' class='text-link'>uludvicka.cz</a>", gallery: ["assets/uludvicka/uludvicka1.webp"] },
+      { title: "DOMIX", label: "web design / digital", desc: "website at <a href='https://www.domix.cz' target='_blank' class='text-link'>domix.cz</a>", gallery: ["assets/domix/domix1.webp"] },
+      { title: "PIT STOP F1", label: "ui / digital", desc: "formula 1 strategy simulator. user interface and game mechanics design.", gallery: ["assets/pitstop/pitstop.webp","assets/pitstop/pitstop1.webp","assets/pitstop/pitstop2.webp","assets/pitstop/pitstop3.webp","assets/pitstop/pitstop4.webp","assets/pitstop/pitstop5.webp"] },
+      { title: "graduation prom", label: "event identity / print", desc: "visual identity for a graduation prom. bold typography and golden accents.", gallery: ["assets/maturitni_ples/maturitni_ples.webp","assets/maturitni_ples/maturitni_ples1.webp","assets/maturitni_ples/maturitni_ples2.webp","assets/maturitni_ples/maturitni_ples3.webp","assets/maturitni_ples/maturitni_ples4.webp","assets/maturitni_ples/maturitni_ples5.webp","assets/maturitni_ples/maturitni_ples6.webp"] },
+      { title: "information board", label: "layout / print", desc: "graphic design of an information board for a jewish cemetery.", gallery: ["assets/informacni_tabule/informacni_tabule.webp","assets/informacni_tabule/informacni_tabule1.webp","assets/informacni_tabule/informacni_tabule2.webp"] },
+      { title: "GYMSOS NEWS", label: "editorial / print", desc: "high school magazine. typesetting, typography, and editorial design.", gallery: ["assets/gymsos_news/gymsos_news.webp","assets/gymsos_news/gymsos_news1.webp","assets/gymsos_news/gymsos_news2.webp","assets/gymsos_news/gymsos_news3.webp","assets/gymsos_news/gymsos_news4.webp","assets/gymsos_news/gymsos_news5.webp"] },
+      { title: "graduation layout", label: "layout & edit / print", desc: "creative graduation layout in the style of plastic action figures", gallery: ["assets/tablo_figurky/tablo_figurky.webp"] },
+      { title: "graduation layout", label: "layout and edit / print", desc: "graduation layout inspired by a fashion magazine.", gallery: ["assets/tablo_vogue/tablo_vogue.webp"] },
+      { title: "graduation layout", label: "layout and edit / print", desc: "graduation layout inspired by a streaming platform.", gallery: ["assets/tablo_netflix/tablo_netflix.webp"] }
+    ];
+
+    const aboutContent = `
+      <div class="about-grid">
+        <div class="about-img-wrapper">
+          <img src="assets/adam.jpg" alt="adam zima" class="about-photo">
+        </div>
+        <div class="about-text-content">
+          <h1 class="about-title">i am adam.</h1>
+          <p class="about-desc">
+            i'm a graphic designer focused on visual identities and print. i enjoy finding simple visual solutions to complex problems.
+            <br><br>
+            i believe design isn't just about how things look, but primarily about how they work.
+          </p>
+
+          <div class="services-list">
+            <h4>what i do</h4>
+            <div class="services-grid">
+              <span class="service-item">visual identities</span>
+              <span class="service-item">web design</span>
+              <span class="service-item">posters, print</span>
+              <span class="service-item">photo editing</span>
             </div>
+          </div>
+
+          <div style="margin-top: 50px;">
+            <h4 style="margin-bottom:10px; color:#999; font-size:0.75rem; letter-spacing:1.5px; text-transform:uppercase; font-weight:600;">contact</h4>
+            <a href="mailto:adam@adamzima.com" style="font-size: 1.5rem; font-weight: 600; color: #111; text-decoration: none;" class="animated-link">adam@adamzima.com</a>
+          </div>
         </div>
-    </div>
+      </div>
+    `;
 
-    <script>
-        /* PROJECTS DATA */
-        const projects = [
-            {
-                title: "U LUDVÍČKA",
-                label: "webdesign / digital",
-                desc: "web design & digital design for Apartment U Ludvíčka. live at <a href='https://www.uludvicka.cz' target='_blank' class='text-link'>uludvicka.cz</a>",
-                gallery: ["assets/uludvicka/uludvicka1.webp"]
-            },
-            {
-                title: "DOMIX",
-                label: "webdesign / digital",
-                desc: "web design & digital design for a home accessories store. live at <a href='https://www.domix.cz' target='_blank' class='text-link'>domix.cz</a>",
-                gallery: ["assets/domix/domix1.webp"]
-            },
-            {
-                title: "PIT STOP",
-                label: "ui / digital",
-                desc: "user interface design for a strategic formula 1 racing simulator. the goal was to create a clear but visually attractive dashboard that allows players to react quickly to changes in the race. the design system includes dark mode with neon yellow for maximum contrast, iconography for different tyre types and weather conditions, and interfaces for team and circuit selection.",
-                gallery: ["assets/pitstop/pitstop.webp", "assets/pitstop/pitstop1.webp", "assets/pitstop/pitstop2.webp", "assets/pitstop/pitstop3.webp", "assets/pitstop/pitstop4.webp", "assets/pitstop/pitstop5.webp"]
-            },
-            {
-                title: "prom",
-                label: "event identity / print & digital",
-                desc: "complete visual style for a high school graduation ball. from the main poster and programme to social media graphics.",
-                gallery: ["assets/maturitni_ples/maturitni_ples.webp", "assets/maturitni_ples/maturitni_ples1.webp", "assets/maturitni_ples/maturitni_ples2.webp", "assets/maturitni_ples/maturitni_ples3.webp", "assets/maturitni_ples/maturitni_ples4.webp", "assets/maturitni_ples/maturitni_ples5.webp", "assets/maturitni_ples/maturitni_ples6.webp"]
-            },
-            {
-                title: "information board",
-                label: "layout / print",
-                desc: "design of an information board. the aim was to create dignified and informative graphics that fit into the historical context.",
-                gallery: ["assets/informacni_tabule/informacni_tabule.webp", "assets/informacni_tabule/informacni_tabule1.webp", "assets/informacni_tabule/informacni_tabule2.webp"]
-            },
-            {
-                title: "GYMSOS NEWS",
-                label: "editorial / print & digital",
-                desc: "school magazine layout. working with grids, typography and text hierarchy for an engaging reading experience.",
-                gallery: ["assets/gymsos_news/gymsos_news.webp", "assets/gymsos_news/gymsos_news1.webp", "assets/gymsos_news/gymsos_news2.webp", "assets/gymsos_news/gymsos_news3.webp", "assets/gymsos_news/gymsos_news4.webp", "assets/gymsos_news/gymsos_news5.webp"]
-            },
-             {
-                title: "graduation layout",
-                label: "layout / print",
-                desc: "viral class composite concept. converting a digital interface into a large format print form.",
-                gallery: ["assets/tablo_figurky/tablo_figurky.webp"]
-            },
-            {
-                title: "graduation layout",
-                label: "layout / print",
-                desc: "unconventional class composite. concept and final post-production in the style of a fashion magazine.",
-                gallery: ["assets/tablo_vogue/tablo_vogue.webp"]
-            },
-            {
-                title: "graduation layout",
-                label: "layout / print",
-                desc: "converting a digital interface into a large format print form.",
-                gallery: ["assets/tablo_netflix/tablo_netflix.webp"]
-            }
-        ];
+    /* Hero parallax */
+    window.addEventListener('scroll', () => {
+      const title = document.getElementById('heroTitle');
+      if (!title) return;
+      title.style.transform = `translateY(${window.scrollY * 0.15}px)`;
+      title.style.opacity = 1 - (window.scrollY / 500);
+    });
 
-        /* ABOUT CONTENT + SERVICES */
-        const aboutContent = `
-            <div class="about-grid">
-                <div class="about-img-wrapper">
-                    <img src="assets/adam.jpg" alt="adam zima" class="about-photo">
-                </div>
-                <div class="about-text-content">
-                    <h1 class="modal-title">i am adam.</h1>
-                    <p class="modal-desc">
-                        i am a graphic designer focusing on visual identities and print media. i enjoy finding simple visual solutions to complex tasks.
-                        <br><br>
-                        i believe that design isn't just about how things look, but primarily how they work.
-                    </p>
-                    
-                    <div class="services-list">
-                        <h4>what i do</h4>
-                        <div class="services-grid">
-                            <span class="service-item">visual identities</span>
-                            <span class="service-item">web design</span>
-                            <span class="service-item">posters, print media</span>
-                            <span class="service-item">photo editing</span>
-                        </div>
-                    </div>
+    /* Reveal observer */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.12 });
 
-                    <div class="contact-item" style="margin-top: 40px;">
-                        <h4 style="margin-bottom:5px; color:#999; font-size:0.8rem; letter-spacing:1px;">contact</h4>
-                        <a href="mailto:adam@adamzima.com" style="font-size: 1.1rem; color: #111; text-decoration: none;">adam@adamzima.com</a>
-                    </div>
-                </div>
-            </div>
-        `;
+    document.querySelectorAll('.reveal-up').forEach(el => {
+      if (!el.classList.contains('project-card')) observer.observe(el);
+    });
 
-        /* MODAL LOGIC (PROJECTS & ABOUT) */
-        const modal = document.getElementById('modal-overlay');
-        const modalContent = document.getElementById('modal-content');
+    /* Preloader */
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const pre = document.getElementById('preloader');
+        if (pre) pre.classList.add('hidden');
+      }, 1800);
+    });
 
-        function openProject(index) {
-            const p = projects[index];
-            let galleryHTML = p.gallery.map(img => `<img src="${img}" alt="${p.title}" loading="lazy">`).join('');
-            
-            modalContent.innerHTML = `
-                <span class="modal-meta">${p.label}</span>
-                <h1 class="modal-title">${p.title}</h1>
-                <p class="modal-desc">${p.desc}</p>
-                <div class="modal-gallery">${galleryHTML}</div>
-            `;
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+    /* MODAL */
+    const modal = document.getElementById('modal-overlay');
+    const modalContent = document.getElementById('modal-content');
+
+    function openProject(index) {
+      const p = projects[index];
+      const galleryHTML = p.gallery
+        .map(img => `<img src="${img}" alt="${p.title}" style="width:100%; border-radius:12px; margin-bottom:30px; box-shadow:0 10px 30px rgba(0,0,0,0.05);" loading="lazy">`)
+        .join('');
+
+      modalContent.innerHTML = `
+        <span style="font-size: 0.8rem; color: #999; letter-spacing: 1.5px; text-transform:lowercase; margin-bottom: 20px; display: block; font-weight:600;">${p.label}</span>
+        <h1 style="font-size: 3rem; font-weight: 600; letter-spacing: -1.5px; margin-bottom: 20px;">${p.title}</h1>
+        <p style="font-size: 1.1rem; color: #444; margin-bottom: 50px; max-width: 600px; line-height:1.7;">${p.desc}</p>
+        <div>${galleryHTML}</div>
+      `;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function openAbout() {
+      modalContent.innerHTML = aboutContent;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+    }
+
+    function openArchive(element) {
+      if (wasDragged) return;
+      const img = element.querySelector('img');
+      modalContent.innerHTML = `
+        <span style="font-size: 0.8rem; color: #999; letter-spacing: 1.5px; text-transform:lowercase; margin-bottom: 20px; display: block; font-weight:600;">archive</span>
+        <img src="${img.src}" style="width:100%; border-radius:12px;">
+      `;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    /* Contact modal */
+    const contactModal = document.getElementById('contact-modal-overlay');
+
+    function openContact() {
+      contactModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeContact() {
+      contactModal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    if (contactModal) {
+      contactModal.addEventListener('click', (e) => {
+        if (e.target === contactModal) closeContact();
+      });
+    }
+
+    /* Formspree submit */
+    const popupForm = document.getElementById("popup-contact-form");
+    const popupStatus = document.getElementById("popup-form-status");
+    const popupSubmitBtn = document.getElementById("popup-submit-btn");
+
+    if (popupForm) {
+      popupForm.addEventListener("submit", async function(event) {
+        event.preventDefault();
+
+        const originalBtnText = popupSubmitBtn.innerText;
+        popupSubmitBtn.innerText = "sending...";
+        popupSubmitBtn.disabled = true;
+
+        const data = new FormData(event.target);
+
+        try {
+          const response = await fetch(event.target.action, {
+            method: popupForm.method,
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            popupForm.style.display = "none";
+            popupStatus.style.display = "block";
+            popupForm.reset();
+          } else {
+            const jsonData = await response.json();
+            alert("Error: " + (jsonData.errors ? jsonData.errors.map(e => e.message).join(", ") : "Something went wrong."));
+            popupSubmitBtn.innerText = originalBtnText;
+            popupSubmitBtn.disabled = false;
+          }
+        } catch (error) {
+          alert("Oops! Connection problem.");
+          popupSubmitBtn.innerText = originalBtnText;
+          popupSubmitBtn.disabled = false;
         }
+      });
+    }
 
-        function openAbout() {
-            modalContent.innerHTML = aboutContent;
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+    /* Slider drag */
+    const slider = document.getElementById('slider');
+    let isDown = false, startX = 0, scrollLeft = 0, wasDragged = false;
 
-        function openArchive(element) {
-            if (wasDragged) return;
-            const img = element.querySelector('img');
-            modalContent.innerHTML = `
-                <span class="modal-meta">archive</span>
-                <h1 class="modal-title">${img.alt}</h1>
-                <div class="modal-gallery"><img src="${img.src}" alt="${img.alt}"></div>
-            `;
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+    if (slider) {
+      slider.addEventListener('mousedown', (e) => {
+        isDown = true; wasDragged = false; slider.style.cursor = 'grabbing';
+        startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft;
+      });
+      slider.addEventListener('mouseleave', () => { isDown = false; slider.style.cursor = 'grab'; });
+      slider.addEventListener('mouseup', () => { isDown = false; slider.style.cursor = 'grab'; });
+      slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault(); wasDragged = true;
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2;
+        slider.scrollLeft = scrollLeft - walk;
+      });
+    }
 
-        function closeModal() {
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
+    /* --------------------------
+       TRUE BALANCED 2-COLUMN
+       -------------------------- */
 
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
+    let projectCards = [];
+
+    function getColumnHeights(left, right) {
+      return { left: left.scrollHeight, right: right.scrollHeight };
+    }
+
+    function attachRevealToCards(cards) {
+      requestAnimationFrame(() => {
+        cards.forEach(card => observer.observe(card));
+
+        cards.forEach(card => {
+          const r = card.getBoundingClientRect();
+          if (r.top < window.innerHeight * 0.92) card.classList.add('is-visible');
         });
+      });
+    }
 
-        /* CONTACT MODAL LOGIC */
-        const contactModal = document.getElementById('contact-modal-overlay');
-        
-        function openContact() {
-            contactModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+    function distributeProjects() {
+      const left = document.getElementById('col-left');
+      const right = document.getElementById('col-right');
+      if (!left || !right || projectCards.length === 0) return;
 
-        function closeContact() {
-            contactModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      left.innerHTML = '';
+      right.innerHTML = '';
 
-        contactModal.addEventListener('click', (e) => {
-            if (e.target === contactModal) closeContact();
-        });
+      if (isMobile) {
+        projectCards.forEach(card => left.appendChild(card));
+        attachRevealToCards(projectCards);
+        return;
+      }
 
+      projectCards.forEach(card => {
+        const h = getColumnHeights(left, right);
+        (h.left <= h.right ? left : right).appendChild(card);
+      });
 
-        /* AJAX CONTACT FORM HANDLING */
-        const popupForm = document.getElementById("popup-contact-form");
-        const popupStatus = document.getElementById("popup-form-status");
-        const popupSubmitBtn = document.getElementById("popup-submit-btn");
+      attachRevealToCards(projectCards);
+    }
 
-        if(popupForm) {
-            popupForm.addEventListener("submit", async function(event) {
-                event.preventDefault();
-                
-                const originalBtnText = popupSubmitBtn.innerText;
-                popupSubmitBtn.innerText = "sending...";
-                popupSubmitBtn.disabled = true;
+    function rebalanceAfterImages() {
+      const imgs = document.querySelectorAll('#col-left img, #col-right img, #projects-pool img');
+      imgs.forEach(img => {
+        if (img.dataset._rebalanceBound) return;
+        img.dataset._rebalanceBound = "1";
 
-                const data = new FormData(event.target);
+        if (img.complete) return;
+        img.addEventListener('load', () => requestAnimationFrame(distributeProjects), { once: true });
+        img.addEventListener('error', () => requestAnimationFrame(distributeProjects), { once: true });
+      });
+    }
 
-                try {
-                    const response = await fetch(event.target.action, {
-                        method: popupForm.method,
-                        body: data,
-                        headers: { 'Accept': 'application/json' }
-                    });
+    window.addEventListener('DOMContentLoaded', () => {
+      projectCards = Array.from(document.querySelectorAll('#projects-pool .project-card'));
+    });
 
-                    if (response.ok) {
-                        popupForm.style.display = "none";
-                        popupStatus.style.display = "block";
-                        popupForm.reset();
-                    } else {
-                        const jsonData = await response.json();
-                        alert("Error: " + (jsonData.errors ? jsonData.errors.map(e => e.message).join(", ") : "Something went wrong."));
-                        popupSubmitBtn.innerText = originalBtnText;
-                        popupSubmitBtn.disabled = false;
-                    }
-                } catch (error) {
-                    alert("Oops! Connection problem.");
-                    popupSubmitBtn.innerText = originalBtnText;
-                    popupSubmitBtn.disabled = false;
-                }
-            });
-        }
+    window.addEventListener('load', () => {
+      distributeProjects();
+      rebalanceAfterImages();
+    });
 
-
-        /* SLIDER */
-        const slider = document.getElementById('slider');
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-        let wasDragged = false;
-
-        slider.addEventListener('mousedown', (e) => {
-            isDown = true; wasDragged = false; slider.style.cursor = 'grabbing';
-            startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft;
-        });
-        slider.addEventListener('mouseleave', () => { isDown = false; slider.style.cursor = 'grab'; });
-        slider.addEventListener('mouseup', () => { isDown = false; slider.style.cursor = 'grab'; });
-        slider.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            wasDragged = true;
-            const x = e.pageX - slider.offsetLeft;
-            const walk = (x - startX) * 2; 
-            slider.scrollLeft = scrollLeft - walk;
-        });
-
-        /* ANIMATION */
-        const glow = document.getElementById('soft-glow');
-        let mouseX = window.innerWidth/2, mouseY = window.innerHeight/2;
-        let glowX = window.innerWidth/2, glowY = window.innerHeight/2;
-
-        document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
-
-        function animateGlow() {
-            glowX += (mouseX - glowX) * 0.04;
-            glowY += (mouseY - glowY) * 0.04;
-            glow.style.left = glowX + 'px';
-            glow.style.top = glowY + 'px';
-            requestAnimationFrame(animateGlow);
-        }
-        animateGlow();
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-            preloader.classList.add('hidden');
-            }, 4000); 
-        });
-    </script>
-
+    let resizeT;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeT);
+      resizeT = setTimeout(() => {
+        distributeProjects();
+        rebalanceAfterImages();
+      }, 120);
+    });
+  </script>
 </body>
 </html>
